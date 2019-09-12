@@ -4,12 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "production",
   devtool: "source-map",
-  plugins: [
-    new Dotenv({
-      path: "./keys/.env.production"
-    }),
-    new MiniCssExtractPlugin()
-  ],
+  plugins: [new MiniCssExtractPlugin()],
   module: {
     rules: [
       {

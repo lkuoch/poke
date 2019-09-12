@@ -4,12 +4,7 @@ const Dotenv = require("dotenv-webpack");
 module.exports = {
   mode: "development",
   devtool: "eval-source-map",
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new Dotenv({
-      path: "./keys/.env.development"
-    })
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
     rules: [
       {
@@ -33,6 +28,7 @@ module.exports = {
   },
   devServer: {
     contentBase: "./dist",
-    hot: true
+    hot: true,
+    stats: 'errors-warnings'
   }
 };

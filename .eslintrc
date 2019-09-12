@@ -5,8 +5,13 @@
     "es6": true,
     "node": true
   },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "settings": {
     "import/resolver": {
       "webpack": {
@@ -15,11 +20,27 @@
     }
   },
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "error"
+    ],
     "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": 0,
     "no-unused-vars": "off",
     "comma-dangle": "off",
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": [
+          "none",
+          "all",
+          "multiple",
+          "single"
+        ]
+      }
+    ]
   }
 }

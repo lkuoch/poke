@@ -1,16 +1,32 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "noImplicitAny": false,
+    "baseUrl": ".",
+    "moduleResolution": "Node",
     "module": "es6",
     "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-
-    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@App/*": ["./src/App/*"],
+      "@Assets/*": ["./src/Assets/*"],
+      "@Components/*": ["./src/Components/*"],
+      "@Containers/*": ["./src/Containers/*"],
+      "@Content/*": ["./src/Content/*"],
+      "@Libraries/*": ["./src/Libraries/*"],
+      "@Middlewares/*": ["src/Middlewares/*"],
+      "@Mock/*": ["./src/Mock/*"],
+      "@Services/*": ["./src/Services/*"],
+      "@Shared/*": ["./src/Shared/*"],
+      "@Styles/*": ["./src/Styles/*"],
+      "@Types": ["src/index.d.ts"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "forceConsistentCasingInFileNames": true,
+    "alwaysStrict": true,
+    "resolveJsonModule": true,
+    "pretty": true,
+    "sourceMap": true
   },
+  "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

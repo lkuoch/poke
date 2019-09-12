@@ -1,18 +1,20 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 // Meta
 const AppMeta = require("./meta.json");
 
 module.exports = {
-  entry: ["babel-polyfill", "./src/App/index.js"],
+  entry: "./src/App/index.tsx",
+  devtool: "inline-source=map",
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["ts-loader"]
       },
       {
         test: /\.css$/i,
@@ -21,23 +23,17 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".css"],
-    alias: {
-      App: path.resolve("./src/App"),
-      Assets: path.resolve("./src/Assets"),
-      Components: path.resolve("./src/Components"),
-      Containers: path.resolve("./src/Containers"),
-      Content: path.resolve("./src/Content"),
-      Middlewares: path.resolve("./src/Middlewares"),
-      Services: path.resolve("./src/Services"),
-      Shared: path.resolve("./src/Shared"),
-      Styles: path.resolve("./src/Styles"),
-      Utils: path.resolve("./src/Utils")
-    }
+    extensions: ["*", ".ts", ".tsx", ".js", ".jsx", ".css"],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: path.resolve("./tsconfig.json")
+      })
+    ]
   },
   devServer: {
     port: 3000,
-    https: true
+    https: true,
+    clientLogLevel: "silent",
   },
   plugins: [
     new CleanWebpackPlugin(),
