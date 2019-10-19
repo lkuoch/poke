@@ -1,5 +1,5 @@
 import { put, take, fork, takeLatest, select } from "redux-saga/effects";
-import { actions } from "./slice";
+import { actions } from "./redux";
 
 export function* initSaga() {
   yield put(actions.fetchPokemon());

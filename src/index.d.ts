@@ -1,6 +1,6 @@
-import * as NavbarSlice from "./Containers/Layout/Navbar/slice";
-import { Mode as INavbarMode } from "@Containers/Layout/Navbar/declarations";
-import { Theme as IAppTheme } from "@Containers/App/declarations";
+import * as NavbarSlice from "./Containers/Layout/Navbar/redux";
+import { Mode as INavbarMode } from "@Containers/Layout/Navbar/models";
+import { Theme as IAppTheme } from "@Containers/App/models";
 import * as Api from "./Middlewares/api";
 
 //* App

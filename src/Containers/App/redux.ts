@@ -1,5 +1,5 @@
-import robodux from "@Libraries/Robodux";
-import { Theme } from "./declarations";
+import robodux from "robodux";
+import { Theme } from "./models";
 import { IApp } from "@Types";
 
 // Name of slice

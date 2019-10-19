@@ -1,9 +1,11 @@
+// Libraries
 import React from "react";
 
-export default React.memo(({ mockData }: any) => {
-    console.log("POKEMON data", mockData.default);
+// Types
+import { IPokemon } from "@Types";
 
-    return (
-        <div>Pokemon Component Works</div>
-    )
+export default React.memo((props: IPokemon.IMappedProps) => {
+  console.log("POKEMON data", props.pokemon);
+
+  return <div>Pokemon Component Works</div>;
 });

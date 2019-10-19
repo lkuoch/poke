@@ -1,5 +1,5 @@
-import robodux from "@Libraries/Robodux";
-import { Mode } from "./declarations";
+import robodux from "robodux";
+import { Mode } from "./models";
 import { INavbar, IApp } from "@Types";
 
 // Name of slice
@@ -26,4 +26,4 @@ const selectors = {
   selectMode: (state: IApp.IRootState) => state[sliceName].mode
 };
 
-export { initialState, actions, reducer, selectors  };
+export { initialState, actions, reducer, selectors };

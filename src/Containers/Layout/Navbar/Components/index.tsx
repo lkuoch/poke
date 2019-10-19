@@ -1,17 +1,24 @@
+// Libraries
 import React from "react";
 import { Menu, Icon } from "antd";
+
+// Components
 import { EnumMenuComponent } from "@Containers/Generic/Components/menu";
-import { Mode } from "../declarations";
+import { Mode } from "../models";
+
+// Types
 import { INavbar } from "@Types";
 
-const { SubMenu } = Menu;
 
 export default React.memo((props: INavbar.IMappedProps) => {
+  //* UI
+  const { SubMenu } = Menu;
+  
   //* States
   const { mode, theme } = props;
 
   //* Dispatches
-  const { updateMode, changeTheme } = props;
+  const { updateMode } = props;
 
   const ChangeMenuMode = () => {
     const menuItems = EnumMenuComponent({
@@ -27,7 +34,13 @@ export default React.memo((props: INavbar.IMappedProps) => {
   };
 
   const renderBody = (
-    <Menu style={{ width: 256 }} defaultSelectedKeys={["1", mode]} forceSubMenuRender={true} mode={mode} theme={theme}>
+    <Menu
+      style={{ width: 256 }}
+      defaultSelectedKeys={["1", mode]}
+      forceSubMenuRender={true}
+      mode={mode}
+      theme={theme}
+    >
       <Menu.Item key="1">
         <Icon type="smile" theme="twoTone" />
         Pokemon

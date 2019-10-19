@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 
 // Current component
 import NavbarComponent from "./Components";
-import { actions, selectors } from "./slice";
-import { Mode } from "./declarations";
+import { actions, selectors } from "./redux";
+import { Mode } from "./models";
 
 // App component
-import { actions as appActions, selectors as appSelectors } from "@Containers/App/slice";
-import { Theme } from "@Containers/App/declarations";
+import { actions as appActions, selectors as appSelectors } from "@Containers/App/redux";
+import { Theme } from "@Containers/App/models";
 
+// Types
 import { INavbar, IApp } from "@Types";
 
 const mapStateToProps = (state: IApp.IRootState): INavbar.IMappedState => {
