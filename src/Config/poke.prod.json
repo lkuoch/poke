@@ -1,0 +1,12 @@
+{
+    "endpoints": {
+        "api": "TODO: PROD ENDPOINT"
+    },
+
+    "features": {
+        "pokemon": {
+            "single": false,
+            "multi": false
+        }
+    }
+}

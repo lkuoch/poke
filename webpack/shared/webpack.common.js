@@ -1,7 +1,6 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 // Meta
 const AppMeta = require("./meta.json");
@@ -12,28 +11,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: ["ts-loader"]
-      },
-      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"]
       }
-    ]
-  },
-  resolve: {
-    extensions: ["*", ".ts", ".tsx", ".js", ".jsx", ".css"],
-    plugins: [
-      new TsconfigPathsPlugin({
-        configFile: path.resolve("./tsconfig.json")
-      })
     ]
   },
   devServer: {
     port: 3000,
     https: true,
     clientLogLevel: "silent",
+    contentBase: "./dist",
+    hot: true,
+    stats: 'errors-warnings'
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -43,7 +32,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: AppMeta.AppTitle,
       template: path.resolve("./src/App/index.html")
-    })
+    }),
   ],
   output: {
     path: path.resolve("../", "dist"),

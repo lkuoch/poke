@@ -1,0 +1,12 @@
+{
+    "endpoints": {
+        "api": "https://localhost:3222/"
+    },
+
+    "features": {
+        "pokemon": {
+            "single": true,
+            "multi": false
+        }
+    }
+}

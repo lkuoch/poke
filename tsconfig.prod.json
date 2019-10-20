@@ -9,7 +9,7 @@
       "@App/*": ["./src/App/*"],
       "@Assets/*": ["./src/Assets/*"],
       "@Components/*": ["./src/Components/*"],
-      "@Config": ["./src/Config/poke.dev.json"],
+      "@Config": ["./src/Config/poke.prod.json"],
       "@Containers/*": ["./src/Containers/*"],
       "@Content/*": ["./src/Content/*"],
       "@Middlewares/*": ["src/Middlewares/*"],
@@ -25,7 +25,9 @@
     "alwaysStrict": true,
     "resolveJsonModule": true,
     "pretty": true,
-    "sourceMap": true
+    "removeComments": true,
+    "declarationMap": false,
+    "sourceMap": false
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist"]
