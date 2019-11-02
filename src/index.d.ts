@@ -1,6 +1,29 @@
-import * as NavbarSlice from "./Containers/Layout/Navbar/redux";
+import * as NavbarSlice from "@Containers/Layout/Navbar/redux";
+import * as PokemonModels from "@Containers/Content/Pokemon/models";
 import { Mode as INavbarMode } from "@Containers/Layout/Navbar/models";
 import { Theme as IAppTheme } from "@Containers/App/models";
+
+//* Config
+export namespace IPokeAppConfig {
+  export interface IConfig {
+    endpoints: IEndpoints;
+    features: IFeatures;
+  }
+
+  export interface IEndpoints {
+    base: string;
+    testPokemon: string;
+  }
+
+  export interface IFeatures {
+    pokemon: IPokemon;
+  }
+
+  export interface IPokemon {
+    single: boolean;
+    multi: boolean;
+  }
+}
 
 //* App
 export namespace IApp {
@@ -11,22 +34,22 @@ export namespace IApp {
   }
 
   export interface IState {
-    pokeAppConfig: Object;
+    pokeAppConfig: IPokeAppConfig.IConfig;
     theme: IAppTheme;
   }
 
   export interface IActions {
-    updatePokeAppConfig: Object;
+    updatePokeAppConfig: IPokeAppConfig.IConfig;
     updateTheme: IAppTheme;
   }
 
-  export interface IMappedState extends IState { }
+  export interface IMappedState extends IState {}
 
   export interface IDispatch {
     updateTheme: (payload: IAppTheme) => void;
   }
 
-  export interface IMappedDispatch extends IDispatch { }
+  export interface IMappedDispatch extends IDispatch {}
 
   export type IMappedProps = IMappedState & IMappedDispatch;
 }
@@ -64,8 +87,10 @@ export namespace IPokemon {
 
   export interface IActions {
     fetchPokemon: never;
+    fetchPokemonRequest: never;
+    fetchPokemonRequestSuccess: Object,
+    fetchPokemonRequestFailure: never;
 
-    // State updates
     updatePokemon: Object;
   }
 
@@ -73,11 +98,9 @@ export namespace IPokemon {
     pokemon: Object;
   }
 
-  export interface IDispatch {
-  }
+  export interface IDispatch {}
 
-  export interface IMappedDispatch extends IDispatch {
-  }
+  export interface IMappedDispatch extends IDispatch {}
 
   export type IMappedProps = IMappedState & IMappedDispatch;
 }

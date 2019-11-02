@@ -7,7 +7,7 @@ const sliceName = "APP";
 
 // Slice initial state
 const initialState: IApp.IState = {
-  pokeAppConfig: {},
+  pokeAppConfig: null,
   theme: Theme.Light
 };
 

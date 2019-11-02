@@ -1,6 +1,8 @@
 import { put } from "redux-saga/effects";
 
 import { actions } from "./redux";
+import { RSAA } from "redux-api-middleware";
+
 import { actions as pokemonActions } from "@Containers/Content/Pokemon/redux";
 import Config from "@Config";
 

@@ -13,8 +13,16 @@ const { actions, reducer } = robodux<IPokemon.IState, IPokemon.IActions, IApp.IR
   name: sliceName,
   initialState,
   reducts: {
+    // API
     fetchPokemon: (state) => state,
-    updatePokemon: (state, payload) => state
+    fetchPokemonRequest: (state) => state,
+    fetchPokemonRequestSuccess: (state) => state,
+    fetchPokemonRequestFailure: (state) => state,
+
+    // Update a single pokemon
+    updatePokemon: (state, payload) => {
+      state.pokemon = payload;
+    }
   }
 });
 
