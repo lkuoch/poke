@@ -3,7 +3,7 @@ import { Mode } from "./models";
 import { INavbar, IApp } from "@Types";
 
 // Name of slice
-const sliceName = "Navbar";
+const sliceName = "NAVBAR";
 
 // Slice initial state
 const initialState: INavbar.IState = {

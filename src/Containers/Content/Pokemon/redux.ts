@@ -2,7 +2,7 @@ import robodux from "robodux";
 import { IPokemon, IApp } from "@Types";
 
 // Name of slice
-const sliceName = "Pokemon";
+const sliceName = "POKEMON";
 
 // Slice initial state
 const initialState: IPokemon.IState = {
@@ -13,7 +13,7 @@ const { actions, reducer } = robodux<IPokemon.IState, IPokemon.IActions, IApp.IR
   name: sliceName,
   initialState,
   reducts: {
-    fetchPokemon: (state, payload) => state,
+    fetchPokemon: (state) => state,
     updatePokemon: (state, payload) => state
   }
 });

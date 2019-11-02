@@ -1,21 +1,22 @@
 import * as NavbarSlice from "./Containers/Layout/Navbar/redux";
 import { Mode as INavbarMode } from "@Containers/Layout/Navbar/models";
 import { Theme as IAppTheme } from "@Containers/App/models";
-import * as Api from "./Middlewares/api";
 
 //* App
 export namespace IApp {
   export interface IRootState {
-    App: IApp.IState;
-    Navbar: INavbar.IState;
-    Pokemon: IPokemon.IState;
+    APP: IApp.IState;
+    NAVBAR: INavbar.IState;
+    POKEMON: IPokemon.IState;
   }
 
   export interface IState {
+    pokeAppConfig: Object;
     theme: IAppTheme;
   }
 
   export interface IActions {
+    updatePokeAppConfig: Object;
     updateTheme: IAppTheme;
   }
 
@@ -87,9 +88,4 @@ export namespace IGeneric {
     SelectedItem: Object;
     Items: Object;
   }
-}
-
-//* Middlewares
-export namespace IApi {
-  type IResponses = readonly [string, string, string];
 }

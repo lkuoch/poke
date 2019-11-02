@@ -1,13 +1,15 @@
-import { fork } from "redux-saga/effects";
-import { initSaga as initPokemonSaga } from "@Containers/Content/Pokemon/sagas";
+import { put } from "redux-saga/effects";
+
+import { actions } from "./redux";
+import { actions as pokemonActions } from "@Containers/Content/Pokemon/redux";
 import Config from "@Config";
 
 export function* initSaga() {
-  // Load config
-  console.log('config', Config);
+  // Load config into store
+  yield put(actions.updatePokeAppConfig(Config));
 
-  // Initialise pokemon sagas
-  yield fork(initPokemonSaga);
+  // Fetch pokemon
+  yield put(pokemonActions.fetchPokemon());
 }
 
 export default [];
