@@ -1,17 +1,21 @@
 import robodux from "robodux";
 import { Mode } from "./models";
-import { INavbar, IApp } from "@Types";
+import { App, Navbar } from "__Types__";
 
 // Name of slice
 const sliceName = "NAVBAR";
 
 // Slice initial state
-const initialState: INavbar.IState = {
+const initialState: Navbar.State.IState = {
   mode: Mode.Inline
 };
 
 // Actions and reducers
-const { actions, reducer } = robodux<INavbar.IState, INavbar.IActions, IApp.IRootState>({
+const { actions, reducer } = robodux<
+  Navbar.State.IState,
+  Navbar.Redux.IActions,
+  App.State.IRootState
+>({
   name: sliceName,
   initialState,
   reducts: {
@@ -23,7 +27,7 @@ const { actions, reducer } = robodux<INavbar.IState, INavbar.IActions, IApp.IRoo
 
 // Selectors
 const selectors = {
-  selectMode: (state: IApp.IRootState) => state[sliceName].mode
+  selectMode: (state: App.State.IRootState) => state[sliceName].mode
 };
 
 export { initialState, actions, reducer, selectors };

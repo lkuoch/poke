@@ -1,8 +1,8 @@
 import React from "react";
 import { Menu } from "antd";
-import { IGeneric } from "@Types";
+import { Generic } from "__Types__";
 
-export function EnumMenuComponent({ SelectedItem, Items }: IGeneric.IEnumMenuComponentProps) {
+export function EnumMenuComponent({ SelectedItem, Items }: Generic.Models.IEnumMenuComponentProps) {
   let content = [];
   for (let [key, value] of Object.entries(Items)) {
     content.push(

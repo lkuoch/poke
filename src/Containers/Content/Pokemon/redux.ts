@@ -1,15 +1,27 @@
 import robodux from "robodux";
-import { IPokemon, IApp } from "@Types";
+import { App, Pokemon } from "__Types__";
 
 // Name of slice
 const sliceName = "POKEMON";
 
 // Slice initial state
-const initialState: IPokemon.IState = {
-  pokemon: null
+const initialState: Pokemon.State.IState = {
+  fetchMeta: {
+    // How many slices we should fetch at a time
+    slices: 5,
+
+    // How many times we should attempt each slice
+    retryAttempts: 3
+  },
+
+  pokemon: []
 };
 
-const { actions, reducer } = robodux<IPokemon.IState, IPokemon.IActions, IApp.IRootState>({
+const { actions, reducer } = robodux<
+  Pokemon.State.IState,
+  Pokemon.Redux.IActions,
+  App.State.IRootState
+>({
   name: sliceName,
   initialState,
   reducts: {
@@ -21,14 +33,16 @@ const { actions, reducer } = robodux<IPokemon.IState, IPokemon.IActions, IApp.IR
 
     // Update a single pokemon
     updatePokemon: (state, payload) => {
-      state.pokemon = payload;
+      state.pokemon.push(payload);
+      return state;
     }
   }
 });
 
 // Selectors
 const selectors = {
-  selectPokemon: (state: IApp.IRootState) => state[sliceName].pokemon
+  selectFetchMeta: (state: App.State.IRootState) => state[sliceName].fetchMeta,
+  selectPokemon: (state: App.State.IRootState) => state[sliceName].pokemon
 };
 
 export { initialState, actions, reducer, selectors };

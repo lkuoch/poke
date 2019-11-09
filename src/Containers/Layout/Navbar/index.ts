@@ -11,9 +11,9 @@ import { actions as appActions, selectors as appSelectors } from "@Containers/Ap
 import { Theme } from "@Containers/App/models";
 
 // Types
-import { INavbar, IApp } from "@Types";
+import { Navbar, App } from "__Types__";
 
-const mapStateToProps = (state: IApp.IRootState): INavbar.IMappedState => {
+const mapStateToProps = (state: App.State.IRootState): Navbar.State.IMappedState => {
   const { selectMode } = selectors;
   const { selectTheme } = appSelectors;
 
@@ -23,14 +23,11 @@ const mapStateToProps = (state: IApp.IRootState): INavbar.IMappedState => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): INavbar.IMappedDispatch => {
+const mapDispatchToProps = (dispatch: Dispatch): Navbar.Redux.IMappedDispatch => {
   return {
     updateMode: (payload: Mode) => dispatch(actions.updateMode(payload)),
     changeTheme: (payload: Theme) => dispatch(appActions.updateTheme(payload))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NavbarComponent as any);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent as any);

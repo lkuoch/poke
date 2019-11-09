@@ -1,18 +1,18 @@
 import robodux from "robodux";
 import { Theme } from "./models";
-import { IApp } from "@Types";
+import { App } from "__Types__";
 
 // Name of slice
 const sliceName = "APP";
 
 // Slice initial state
-const initialState: IApp.IState = {
+const initialState: App.State.IState = {
   pokeAppConfig: null,
   theme: Theme.Light
 };
 
 // Actions and reducers
-const { actions, reducer } = robodux<IApp.IState, IApp.IActions, IApp.IRootState>({
+const { actions, reducer } = robodux<App.State.IState, App.Redux.IActions, App.State.IRootState>({
   name: sliceName,
   initialState,
   reducts: {
@@ -30,8 +30,8 @@ const { actions, reducer } = robodux<IApp.IState, IApp.IActions, IApp.IRootState
 
 // Selectors
 const selectors = {
-  selectPokeConfig: (state: IApp.IRootState) => state[sliceName].pokeAppConfig,
-  selectTheme: (state: IApp.IRootState) => state[sliceName].theme
+  selectPokeConfig: (state: App.State.IRootState) => state[sliceName].pokeAppConfig,
+  selectTheme: (state: App.State.IRootState) => state[sliceName].theme
 };
 
 export { initialState, actions, reducer, selectors };

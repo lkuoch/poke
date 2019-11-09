@@ -17,7 +17,7 @@
       "@Services/*": ["./src/Services/*"],
       "@Shared/*": ["./src/Shared/*"],
       "@Styles/*": ["./src/Styles/*"],
-      "@Types": ["src/index.d.ts"],
+      "__Types__": ["src/@Types/index.d.ts"],
     },
     "allowSyntheticDefaultImports": true,
     "jsx": "react",

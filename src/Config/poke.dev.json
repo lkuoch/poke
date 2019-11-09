@@ -1,7 +1,7 @@
 {
     "endpoints": {
         "base": "https://localhost:3222/",
-        "testPokemon": "https://localhost:3222/testPokemon"
+        "testPokemon": "https://pokeapi.co/api/v2/pokemon"
     },
 
     "features": {
