@@ -4,7 +4,7 @@ import { actions } from "./redux";
 import { RSAA } from "redux-api-middleware";
 
 import { actions as pokemonActions } from "@Containers/Content/Pokemon/redux";
-import Config from "@Config";
+import Config from "@ConfigFile";
 
 export function* initSaga() {
   // Load config into store

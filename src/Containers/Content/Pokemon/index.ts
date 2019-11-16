@@ -6,7 +6,7 @@ import PokemonListComponent from "./Components";
 import { actions, selectors } from "./redux";
 
 // Types
-import { App, Navbar, Pokemon } from "__Types__";
+import { App, Navbar, Pokemon } from "@App/types";
 
 const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedState => {
   const { selectPokemon, selectFetchMeta } = selectors;

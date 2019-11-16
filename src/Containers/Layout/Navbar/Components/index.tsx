@@ -7,7 +7,7 @@ import { EnumMenuComponent } from "@Containers/Generic/Components/menu";
 import { Mode } from "../models";
 
 // Types
-import { Navbar } from "__Types__";
+import { Navbar } from "@App/types";
 
 export default React.memo((props: Navbar.Redux.IMappedProps) => {
   //* UI

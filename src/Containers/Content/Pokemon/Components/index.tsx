@@ -2,7 +2,7 @@
 import React from "react";
 
 // Types
-import { Pokemon } from "__Types__";
+import { Pokemon } from "@App/types";
 
 export default React.memo((props: Pokemon.Redux.IMappedProps) => {
   const { pokemon } = props;

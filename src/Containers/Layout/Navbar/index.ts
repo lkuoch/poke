@@ -11,7 +11,7 @@ import { actions as appActions, selectors as appSelectors } from "@Containers/Ap
 import { Theme } from "@Containers/App/models";
 
 // Types
-import { Navbar, App } from "__Types__";
+import { Navbar, App } from "@App/types";
 
 const mapStateToProps = (state: App.State.IRootState): Navbar.State.IMappedState => {
   const { selectMode } = selectors;

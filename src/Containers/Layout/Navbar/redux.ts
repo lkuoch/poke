@@ -1,6 +1,6 @@
 import robodux from "robodux";
 import { Mode } from "./models";
-import { App, Navbar } from "__Types__";
+import { App, Navbar } from "@App/types";
 
 // Name of slice
 const sliceName = "NAVBAR";
@@ -11,11 +11,7 @@ const initialState: Navbar.State.IState = {
 };
 
 // Actions and reducers
-const { actions, reducer } = robodux<
-  Navbar.State.IState,
-  Navbar.Redux.IActions,
-  App.State.IRootState
->({
+const { actions, reducer } = robodux<Navbar.State.IState, Navbar.Redux.IActions>({
   name: sliceName,
   initialState,
   reducts: {

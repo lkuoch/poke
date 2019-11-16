@@ -1,6 +1,6 @@
 import robodux from "robodux";
 import { Theme } from "./models";
-import { App } from "__Types__";
+import { App } from "@App/types";
 
 // Name of slice
 const sliceName = "APP";
@@ -12,7 +12,7 @@ const initialState: App.State.IState = {
 };
 
 // Actions and reducers
-const { actions, reducer } = robodux<App.State.IState, App.Redux.IActions, App.State.IRootState>({
+const { actions, reducer } = robodux<App.State.IState, App.Redux.IActions>({
   name: sliceName,
   initialState,
   reducts: {

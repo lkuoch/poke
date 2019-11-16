@@ -1,20 +1,27 @@
-import { select, put, take, call, fork, takeLeading } from "redux-saga/effects";
-import { actions as appActions, selectors as appSelectors } from "@Containers/App/redux";
+import { select, put, take, call, fork, takeLeading, retry } from "redux-saga/effects";
+import { selectors as appSelectors } from "@Containers/App/redux";
 import { actions, selectors } from "./redux";
 import * as services from "./services";
-import { PokeAppConfig, Pokemon } from "__Types__";
+import { AppConfig, Pokemon } from "@App/types";
 
 function* fetchPokemonSaga() {
   // Get endpoint from config
   const {
     endpoints: { testPokemon }
-  }: PokeAppConfig.Models.IConfig = yield select(appSelectors.selectPokeConfig);
-  // const {}  = yield select(selectors.selectFetchMeta);
+  }: AppConfig.Models.IConfig = yield select(appSelectors.selectPokeConfig);
 
-  yield fork(fetchNextPokemon, testPokemon, 3);
+  // Get fetchMeta
+  const fetchMeta = yield select(selectors.selectFetchMeta);
+  yield fork(fetchNextPokemon, testPokemon, fetchMeta);
 }
 
-function* fetchNextPokemon(fetchEndpoint: string, retryAttempts: number) {
+function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IFetchMeta) {
+  // Reassign `_fetchMeta` so we can mutate it
+  const fetchMeta = Object.assign({}, _fetchMeta);
+
+  // Stop fetching after we hit out limit
+  if (fetchMeta.pagesToFetch === 0) return;
+
   // Dispatch API middleware action
   yield put<any>(services.createFetchPokemonAction(fetchEndpoint));
 
@@ -26,10 +33,11 @@ function* fetchNextPokemon(fetchEndpoint: string, retryAttempts: number) {
 
   // Scenario 1: Network request failed -> Try until we have no more retry attempts left
   if (fetchPokemonResultType === actions.fetchPokemonRequestFailure) {
-    if (retryAttempts > 0) {
-      console.log(`Retry attempt #${retryAttempts} fetching from ${fetchEndpoint} again`);
+    if (fetchMeta.retryAttempts > 0) {
+      console.log(`Retry attempt #${fetchMeta.retryAttempts} fetching from ${fetchEndpoint} again`);
 
-      return fetchNextPokemon(fetchEndpoint, (retryAttempts -= 1));
+      fetchMeta.retryAttempts -= 1;
+      return fetchNextPokemon(fetchEndpoint, fetchMeta);
     } else {
       // Can't retrieve the object which means we can't get the next pokemon
       // Dispatch some kind of error?
@@ -48,7 +56,8 @@ function* fetchNextPokemon(fetchEndpoint: string, retryAttempts: number) {
 
   // Call the saga again until we don't have anymore links
   if (hasNextLink) {
-    return yield fork(fetchNextPokemon, nextLink, retryAttempts);
+    fetchMeta.pagesToFetch -= 1;
+    return yield fork(fetchNextPokemon, nextLink, fetchMeta);
   }
 }
 

@@ -1,5 +1,5 @@
 import robodux from "robodux";
-import { App, Pokemon } from "__Types__";
+import { App, Pokemon } from "@App/types";
 
 // Name of slice
 const sliceName = "POKEMON";
@@ -8,7 +8,7 @@ const sliceName = "POKEMON";
 const initialState: Pokemon.State.IState = {
   fetchMeta: {
     // How many slices we should fetch at a time
-    slices: 5,
+    pagesToFetch: 5,
 
     // How many times we should attempt each slice
     retryAttempts: 3
@@ -17,11 +17,7 @@ const initialState: Pokemon.State.IState = {
   pokemon: []
 };
 
-const { actions, reducer } = robodux<
-  Pokemon.State.IState,
-  Pokemon.Redux.IActions,
-  App.State.IRootState
->({
+const { actions, reducer } = robodux<Pokemon.State.IState, Pokemon.Redux.IActions>({
   name: sliceName,
   initialState,
   reducts: {
