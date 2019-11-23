@@ -31,7 +31,8 @@ export namespace Redux {
     fetchPokemonRequestSuccess: Object;
     fetchPokemonRequestFailure: never;
 
-    updatePokemon: Object;
+    updatePokemon: Array<Object>;
+    addPokemon: Object;
   }
 
   export interface IDispatch {}

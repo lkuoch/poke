@@ -5,14 +5,29 @@ import * as services from "./services";
 import { AppConfig, Pokemon } from "@App/types";
 
 function* fetchPokemonSaga() {
-  // Get endpoint from config
+  // Get config
   const {
-    endpoints: { testPokemon }
+    endpoints,
+    features: { pokemon }
   }: AppConfig.Models.IConfig = yield select(appSelectors.selectPokeConfig);
 
-  // Get fetchMeta
-  const fetchMeta = yield select(selectors.selectFetchMeta);
-  yield fork(fetchNextPokemon, testPokemon, fetchMeta);
+  //+ TOGGLE(pokemon._enabled)
+  if (pokemon._enabled) {
+    // Get config attributes
+    const { testPokemon } = endpoints;
+
+    // Get fetchMeta
+    const fetchMeta = yield select(selectors.selectFetchMeta);
+    yield fork(fetchNextPokemon, testPokemon, fetchMeta);
+  }
+  //- MOCK(pokemon.json)
+  else {
+    const { pokemon: pokemonMock } = require("@Mock/pokemon.json");
+
+    // Update it in the store
+    console.info("%c Using mock data for pokemon", "color: #ef5350", pokemonMock);
+    yield put(actions.updatePokemon(pokemonMock));
+  }
 }
 
 function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IFetchMeta) {
@@ -46,7 +61,7 @@ function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IFet
   }
 
   // Scenario 2: Fetched Pokemon; update it in the store
-  yield put(actions.updatePokemon(fetchPokemonResult));
+  yield put(actions.addPokemon(fetchPokemonResult));
 
   // Get the next pokemon link
   const { hasNextLink, nextLink }: Pokemon.Services.IRetrieveNextPokemonLink = yield call(

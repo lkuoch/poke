@@ -14,6 +14,7 @@ const initialState: Pokemon.State.IState = {
     retryAttempts: 3
   },
 
+  // List of pokemon
   pokemon: []
 };
 
@@ -27,10 +28,15 @@ const { actions, reducer } = robodux<Pokemon.State.IState, Pokemon.Redux.IAction
     fetchPokemonRequestSuccess: (state) => state,
     fetchPokemonRequestFailure: (state) => state,
 
-    // Update a single pokemon
-    updatePokemon: (state, payload) => {
+    // Add single pokemon
+    addPokemon: (state, payload) => {
       state.pokemon.push(payload);
       return state;
+    },
+
+    // Update pokemon
+    updatePokemon: (state, payload) => {
+      state.pokemon = payload;
     }
   }
 });

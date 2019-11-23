@@ -12,7 +12,5 @@ export default React.memo((props: Pokemon.Redux.IMappedProps) => {
     return null;
   }
 
-  console.log("POKEMON data", props.pokemon);
-
   return <div>Pokemon Component Works</div>;
 });

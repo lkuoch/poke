@@ -5,6 +5,7 @@
 
     "features": {
         "pokemon": {
+            "_enabled": false,
             "single": false,
             "multi": false
         }
