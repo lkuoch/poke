@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 // Current component
 import NavbarComponent from "./Components";
 import { actions, selectors } from "./redux";
-import { Mode } from "./models";
+import { Mode as ModeModel } from "./models";
 
 // App component
 import { actions as appActions, selectors as appSelectors } from "@Containers/App/redux";
-import { Theme } from "@Containers/App/models";
+import { Theme as ThemeModel } from "@Containers/App/models";
 
 // Types
 import { Navbar, App } from "@App/types";
@@ -25,8 +25,8 @@ const mapStateToProps = (state: App.State.IRootState): Navbar.State.IMappedState
 
 const mapDispatchToProps = (dispatch: Dispatch): Navbar.Redux.IMappedDispatch => {
   return {
-    updateMode: (payload: Mode) => dispatch(actions.updateMode(payload)),
-    changeTheme: (payload: Theme) => dispatch(appActions.updateTheme(payload))
+    updateMode: (payload: ModeModel) => dispatch(actions.updateMode(payload)),
+    changeTheme: (payload: ThemeModel) => dispatch(appActions.updateTheme(payload))
   };
 };
 

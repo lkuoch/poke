@@ -1,16 +1,21 @@
 // Libraries
 import React from "react";
+import { Layout, Menu, Icon } from "antd";
 import Navbar from "@Containers/Layout/Navbar";
+import Header from "@Containers/Layout/Header";
 
 // Copmonents
 import Pokemon from "@Containers/Content/Pokemon";
 
 function App() {
   return (
-    <div id="app">
+    <Layout id="app">
       <Navbar />
-      <Pokemon />
-    </div>
+      <Layout>
+        <Header />
+        <Pokemon />
+      </Layout>
+    </Layout>
   );
 }
 

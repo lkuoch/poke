@@ -1,45 +1,36 @@
-// Libraries
 import React from "react";
-import { Menu, Icon } from "antd";
-
-// Components
+import { Menu, Layout, Icon, Slider } from "antd";
 import { EnumMenuComponent } from "@Containers/Generic/Components/menu";
-import { Mode } from "../models";
-
-// Types
+import { Mode as ModeModel } from "../models";
 import { Navbar } from "@App/types";
 
-export default React.memo((props: Navbar.Redux.IMappedProps) => {
-  //* UI
-  const { SubMenu } = Menu;
+//* UI
+const { SubMenu } = Menu;
+const { Sider } = Layout;
 
+export default React.memo((props: Navbar.Redux.IMappedProps) => {
   //* States
   const { mode, theme } = props;
 
   //* Dispatches
   const { updateMode } = props;
 
-  const ChangeMenuMode = () => {
+  //* Renders
+  const changeMenuMode = () => {
     const menuItems = EnumMenuComponent({
       SelectedItem: mode,
-      Items: Mode
+      Items: ModeModel
     });
 
     return (
-      <Menu theme={theme} onClick={(e) => updateMode(e.key as Mode)}>
+      <Menu theme={theme} onClick={(e) => updateMode(e.key as ModeModel)}>
         {menuItems}
       </Menu>
     );
   };
 
   const renderBody = (
-    <Menu
-      style={{ width: 256 }}
-      defaultSelectedKeys={["1", mode]}
-      forceSubMenuRender={true}
-      mode={mode}
-      theme={theme}
-    >
+    <Menu defaultSelectedKeys={["1", mode]} forceSubMenuRender={true} mode={mode} theme={theme}>
       <Menu.Item key="1">
         <Icon type="smile" theme="twoTone" />
         Pokemon
@@ -48,22 +39,6 @@ export default React.memo((props: Navbar.Redux.IMappedProps) => {
         <Icon type="calendar" />
         Navigation Two
       </Menu.Item>
-      <SubMenu
-        key="sub1"
-        title={
-          <span>
-            <Icon type="appstore" />
-            <span>Navigation Three</span>
-          </span>
-        }
-      >
-        <Menu.Item key="3">Option 3</Menu.Item>
-        <Menu.Item key="4">Option 4</Menu.Item>
-        <SubMenu key="sub1-2" title="Submenu">
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
-        </SubMenu>
-      </SubMenu>
       <SubMenu
         key="sub2"
         title={
@@ -74,11 +49,15 @@ export default React.memo((props: Navbar.Redux.IMappedProps) => {
         }
       >
         <SubMenu key="changeMenuMode" title={<span>Menu</span>}>
-          {ChangeMenuMode()}
+          {changeMenuMode()}
         </SubMenu>
       </SubMenu>
     </Menu>
   );
 
-  return <div id="navbar">{renderBody}</div>;
+  return (
+    <Sider id="navbar" trigger={null} theme={theme} collapsible>
+      {renderBody}
+    </Sider>
+  );
 });

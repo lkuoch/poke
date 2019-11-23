@@ -1,7 +1,9 @@
-// Libraries
 import React from "react";
+import { Layout } from "antd";
 
-// Types
+//* UI
+const { Content } = Layout;
+
 import { Pokemon } from "@App/types";
 
 export default React.memo((props: Pokemon.Redux.IMappedProps) => {
@@ -12,5 +14,5 @@ export default React.memo((props: Pokemon.Redux.IMappedProps) => {
     return null;
   }
 
-  return <div>Pokemon Component Works</div>;
+  return <Content id="pokemon-content">Pokemon Component Works</Content>;
 });
