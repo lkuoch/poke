@@ -34,4 +34,4 @@ const selectors = {
   selectTheme: (state: App.State.IRootState) => state[sliceName].theme
 };
 
-export { initialState, actions, reducer, selectors };
+export { initialState, actions, reducer, selectors, sliceName };

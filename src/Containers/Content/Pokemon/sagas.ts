@@ -2,6 +2,7 @@ import { select, put, take, call, fork, takeLeading, retry } from "redux-saga/ef
 import { selectors as appSelectors } from "@Containers/App/redux";
 import { actions, selectors } from "./redux";
 import * as services from "./services";
+import { FetchPokemonApiResult } from "./models";
 import { AppConfig, Pokemon } from "@App/types";
 
 function* fetchPokemonSaga() {
@@ -42,12 +43,12 @@ function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IFet
 
   // Wait for result
   const { type: fetchPokemonResultType, payload: fetchPokemonResult } = yield take([
-    actions.fetchPokemonRequestSuccess,
-    actions.fetchPokemonRequestFailure
+    FetchPokemonApiResult.SUCCESS,
+    FetchPokemonApiResult.FAILURE
   ]);
 
   // Scenario 1: Network request failed -> Try until we have no more retry attempts left
-  if (fetchPokemonResultType === actions.fetchPokemonRequestFailure) {
+  if (fetchPokemonResultType === FetchPokemonApiResult.FAILURE) {
     if (fetchMeta.retryAttempts > 0) {
       console.log(`Retry attempt #${fetchMeta.retryAttempts} fetching from ${fetchEndpoint} again`);
 

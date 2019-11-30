@@ -24,9 +24,6 @@ const { actions, reducer } = robodux<Pokemon.State.IState, Pokemon.Redux.IAction
   reducts: {
     // API
     fetchPokemon: (state) => state,
-    fetchPokemonRequest: (state) => state,
-    fetchPokemonRequestSuccess: (state) => state,
-    fetchPokemonRequestFailure: (state) => state,
 
     // Add single pokemon
     addPokemon: (state, payload) => {
@@ -47,4 +44,4 @@ const selectors = {
   selectPokemon: (state: App.State.IRootState) => state[sliceName].pokemon
 };
 
-export { initialState, actions, reducer, selectors };
+export { initialState, actions, reducer, selectors, sliceName };

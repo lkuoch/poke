@@ -27,9 +27,6 @@ export namespace State {
 export namespace Redux {
   export interface IActions {
     fetchPokemon: never;
-    fetchPokemonRequest: never;
-    fetchPokemonRequestSuccess: Object;
-    fetchPokemonRequestFailure: never;
 
     updatePokemon: Array<Object>;
     addPokemon: Object;

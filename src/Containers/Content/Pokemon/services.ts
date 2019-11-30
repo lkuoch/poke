@@ -1,5 +1,5 @@
 import { RSAA, RSAAAction } from "redux-api-middleware";
-import { actions } from "./redux";
+import { FetchPokemonApiResult } from "./models";
 import { Pokemon } from "@App/types";
 
 export const createFetchPokemonAction = (endpoint: string): RSAAAction => {
@@ -11,9 +11,9 @@ export const createFetchPokemonAction = (endpoint: string): RSAAAction => {
         "Content-Type": "application/json"
       },
       types: [
-        actions.fetchPokemonRequest.toString(),
-        actions.fetchPokemonRequestSuccess.toString(),
-        actions.fetchPokemonRequestFailure.toString()
+        FetchPokemonApiResult.REQUEST,
+        FetchPokemonApiResult.SUCCESS,
+        FetchPokemonApiResult.FAILURE
       ]
     }
   };

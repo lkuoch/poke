@@ -26,4 +26,4 @@ const selectors = {
   selectMode: (state: App.State.IRootState) => state[sliceName].mode
 };
 
-export { initialState, actions, reducer, selectors };
+export { initialState, actions, reducer, selectors, sliceName };

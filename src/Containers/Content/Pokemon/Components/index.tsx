@@ -1,10 +1,10 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Card, Col, Row } from "antd";
+import { Pokemon } from "@App/types";
 
 //* UI
 const { Content } = Layout;
-
-import { Pokemon } from "@App/types";
+const { Meta } = Card;
 
 export default React.memo((props: Pokemon.Redux.IMappedProps) => {
   const { pokemon } = props;
@@ -14,5 +14,29 @@ export default React.memo((props: Pokemon.Redux.IMappedProps) => {
     return null;
   }
 
-  return <Content id="pokemon-content">Pokemon Component Works</Content>;
+  const renderPokemon = () => {
+    const pokemonList = pokemon.map((p: any, pIndex) =>
+      p.results.map((r: any, rIndex: number) => {
+        const pokemonName = String(r.name.charAt(0).toUpperCase() + r.name.slice(1));
+
+        return (
+          <Col span={8} key={`${pIndex}${rIndex}`}>
+            <Card title={pokemonName} bordered={false}>
+              Write description
+            </Card>
+          </Col>
+        );
+      })
+    );
+
+    return pokemonList;
+  };
+
+  return (
+    <Content id="pokemon-content">
+      <div style={{ background: "#ECECEC", padding: "30px" }}>
+        <Row gutter={16}>{renderPokemon()}</Row>
+      </div>
+    </Content>
+  );
 });
