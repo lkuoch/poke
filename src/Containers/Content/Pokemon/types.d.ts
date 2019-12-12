@@ -8,18 +8,18 @@ export namespace Services {
 }
 
 export namespace State {
-  export interface IFetchMeta {
+  export interface IMeta {
     pagesToFetch: number;
     retryAttempts: number;
   }
 
   export interface IState {
-    fetchMeta: IFetchMeta;
+    meta: IMeta;
     pokemon: Array<Object>;
   }
 
   export interface IMappedState extends State.IState {
-    fetchMeta: State.IFetchMeta;
+    meta: State.IMeta;
     pokemon: Array<Object>;
   }
 }

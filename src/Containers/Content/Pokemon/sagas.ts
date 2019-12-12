@@ -13,12 +13,12 @@ function* fetchPokemonSaga() {
   }: AppConfig.Models.IConfig = yield select(appSelectors.selectPokeConfig);
 
   //+ TOGGLE(pokemon._enabled)
-  if (pokemon._enabled) {
+  if (pokemon.enabled) {
     // Get config attributes
     const { testPokemon } = endpoints;
 
-    // Get fetchMeta
-    const fetchMeta = yield select(selectors.selectFetchMeta);
+    // Get fetch fetchMeta
+    const fetchMeta = yield select(selectors.selectMeta);
     yield fork(fetchNextPokemon, testPokemon, fetchMeta);
   }
   //- MOCK(pokemon.json)
@@ -31,7 +31,7 @@ function* fetchPokemonSaga() {
   }
 }
 
-function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IFetchMeta) {
+function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IMeta) {
   // Reassign `_fetchMeta` so we can mutate it
   const fetchMeta = Object.assign({}, _fetchMeta);
 

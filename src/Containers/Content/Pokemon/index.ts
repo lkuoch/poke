@@ -9,10 +9,10 @@ import { actions, selectors } from "./redux";
 import { App, Navbar, Pokemon } from "@App/types";
 
 const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedState => {
-  const { selectPokemon, selectFetchMeta } = selectors;
+  const { selectPokemon, selectMeta } = selectors;
 
   return {
-    fetchMeta: selectFetchMeta(state),
+    meta: selectMeta(state),
     pokemon: selectPokemon(state)
   };
 };

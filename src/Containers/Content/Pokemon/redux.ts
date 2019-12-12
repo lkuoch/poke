@@ -6,7 +6,7 @@ const sliceName = "POKEMON";
 
 // Slice initial state
 const initialState: Pokemon.State.IState = {
-  fetchMeta: {
+  meta: {
     // How many slices we should fetch at a time
     pagesToFetch: 5,
 
@@ -40,7 +40,7 @@ const { actions, reducer } = robodux<Pokemon.State.IState, Pokemon.Redux.IAction
 
 // Selectors
 const selectors = {
-  selectFetchMeta: (state: App.State.IRootState) => state[sliceName].fetchMeta,
+  selectMeta: (state: App.State.IRootState) => state[sliceName].meta,
   selectPokemon: (state: App.State.IRootState) => state[sliceName].pokemon
 };
 

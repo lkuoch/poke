@@ -14,9 +14,7 @@ export namespace Models {
   }
 
   export interface IPokemon {
-    _enabled: boolean;
-    single: boolean;
-    multi: boolean;
+    enabled: boolean;
   }
 }
 
