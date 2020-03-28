@@ -1,4 +1,4 @@
-import { sliceName } from "./redux";
-import { RootApiResult } from "@App/models";
+import { name } from "./reducer";
+import { RootApiResult } from "src/Core/models";
 
-export const FetchPokemonApiResult = RootApiResult(`${sliceName}/FetchPokemon`);
+export const FetchPokemonApiResult = RootApiResult(`${name}/FetchPokemon`);

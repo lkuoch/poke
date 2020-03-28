@@ -1,9 +1,9 @@
 import { select, put, take, call, fork, takeLeading, retry } from "redux-saga/effects";
-import { selectors as appSelectors } from "@Containers/App/redux";
-import { actions, selectors } from "./redux";
+import { selectors as appSelectors } from "@Containers/App/reducer";
+import { actions, selectors } from "./reducer";
 import * as services from "./services";
 import { FetchPokemonApiResult } from "./models";
-import { AppConfig, Pokemon } from "@App/types";
+import { AppConfig, Pokemon } from "__Types__";
 
 function* fetchPokemonSaga() {
   // Get config

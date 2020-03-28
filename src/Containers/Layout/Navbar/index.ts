@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 
 // Current component
 import NavbarComponent from "./Components";
-import { actions, selectors } from "./redux";
+import { actions, selectors } from "./reducer";
 import { Mode as ModeModel } from "./models";
 
 // App component
-import { actions as appActions, selectors as appSelectors } from "@Containers/App/redux";
+import { actions as appActions, selectors as appSelectors } from "@Containers/App/reducer";
 import { Theme as ThemeModel } from "@Containers/App/models";
 
 // Types
-import { Navbar, App } from "@App/types";
+import { Navbar, App } from "__Types__";
 
 const mapStateToProps = (state: App.State.IRootState): Navbar.State.IMappedState => {
   const { selectMode } = selectors;

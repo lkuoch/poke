@@ -1,5 +1,6 @@
 import { Mode as INavbarMode } from "@Containers/Layout/Navbar/models";
 import { Theme as IAppTheme } from "@Containers/App/models";
+import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 
 export namespace Models {}
 
@@ -16,8 +17,8 @@ export namespace State {
 }
 
 export namespace Redux {
-  export interface IActions {
-    updateMode: INavbarMode;
+  export interface IActions extends SliceCaseReducers<State.IState> {
+    updateMode: CaseReducer<State.IState, PayloadAction<INavbarMode>>;
   }
 
   export interface IDispatch {

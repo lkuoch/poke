@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Card, Col, Row } from "antd";
-import { Pokemon } from "@App/types";
+import { Pokemon } from "__Types__";
 
 //* UI
 const { Content } = Layout;

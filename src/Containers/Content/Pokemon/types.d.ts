@@ -1,3 +1,5 @@
+import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
+
 export namespace Models {}
 
 export namespace Services {
@@ -25,11 +27,10 @@ export namespace State {
 }
 
 export namespace Redux {
-  export interface IActions {
-    fetchPokemon: never;
-
-    updatePokemon: Array<Object>;
-    addPokemon: Object;
+  export interface IActions extends SliceCaseReducers<State.IState> {
+    fetchPokemon: CaseReducer<State.IState>;
+    updatePokemon: CaseReducer<State.IState, PayloadAction<Array<Object>>>;
+    addPokemon: CaseReducer<State.IState, PayloadAction<Object>>;
   }
 
   export interface IDispatch {}

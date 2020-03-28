@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 // Current component
 import PokemonListComponent from "./Components";
-import { actions, selectors } from "./redux";
+import { selectors } from "./reducer";
 
 // Types
-import { App, Navbar, Pokemon } from "@App/types";
+import { App, Pokemon } from "__Types__";
 
 const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedState => {
   const { selectPokemon, selectMeta } = selectors;
@@ -17,7 +17,7 @@ const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedStat
   };
 };
 
-const mapDispatchToProp = (dispatch: Dispatch): Pokemon.Redux.IMappedDispatch => {
+const mapDispatchToProp = (_dispatch: Dispatch): Pokemon.Redux.IMappedDispatch => {
   return {};
 };
 
