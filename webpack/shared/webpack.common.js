@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const AppMeta = require("./meta.json");
 
 module.exports = {
-  entry: "./src/App/index.tsx",
+  entry: "./src/Core/index.tsx",
   devtool: "inline-source=map",
   module: {
     rules: [
@@ -31,7 +31,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: AppMeta.AppTitle,
-      template: path.resolve("./src/App/index.html")
+      template: path.resolve("./src/Core/index.html")
     }),
   ],
   output: {

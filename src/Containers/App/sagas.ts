@@ -1,14 +1,12 @@
 import { put } from "redux-saga/effects";
-
-import { actions } from "./redux";
-import { RSAA } from "redux-api-middleware";
-
-import { actions as pokemonActions } from "@Containers/Content/Pokemon/redux";
+import { actions as pokemonActions } from "@Containers/Content/Pokemon/reducer";
+import { actions } from "./reducer";
 import Config from "@ConfigFile";
+import type { AppConfig } from "__Types__";
 
 export function* initSaga() {
   // Load config into store
-  yield put(actions.updatePokeAppConfig(Config));
+  yield put(actions.updatePokeAppConfig(Config as AppConfig.Models.IConfig));
 
   // Fetch pokemon
   yield put(pokemonActions.fetchPokemon());

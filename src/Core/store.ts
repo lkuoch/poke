@@ -2,7 +2,7 @@ import createSagaMiddleWare from "redux-saga";
 import { applyMiddleware, createStore, Middleware } from "redux";
 import { apiMiddleware } from "redux-api-middleware";
 import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducers from "./redux";
+import rootReducers from "./reducers";
 import rootSagas from "./sagas";
 
 // Global store component
@@ -11,11 +11,7 @@ const getEnhancers = (middleWares: Array<Middleware>) => {
     return applyMiddleware(...middleWares);
   }
 
-  // Redux devtools config
-  // const devToolsConfig = {
-  //   actionsBlacklist: []
-  // };
-
+  // Use redux devtools in development environment
   return composeWithDevTools(applyMiddleware(...middleWares));
 };
 

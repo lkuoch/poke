@@ -1,8 +1,8 @@
 import React from "react";
-import { Menu, Layout, Icon, Slider } from "antd";
+import { Menu, Layout, Slider } from "antd";
 import { EnumMenuComponent } from "@Containers/Generic/Components/menu";
 import { Mode as ModeModel } from "../models";
-import { Navbar } from "@App/types";
+import { Navbar } from "__Types__";
 
 //* UI
 const { SubMenu } = Menu;
@@ -31,19 +31,12 @@ export default React.memo((props: Navbar.Redux.IMappedProps) => {
 
   const renderBody = (
     <Menu defaultSelectedKeys={["1", mode]} forceSubMenuRender={true} mode={mode} theme={theme}>
-      <Menu.Item key="1">
-        <Icon type="smile" theme="twoTone" />
-        Pokemon
-      </Menu.Item>
-      <Menu.Item key="2">
-        <Icon type="calendar" />
-        Navigation Two
-      </Menu.Item>
+      <Menu.Item key="1">Pokemon</Menu.Item>
+      <Menu.Item key="2">Navigation Two</Menu.Item>
       <SubMenu
         key="sub2"
         title={
           <span>
-            <Icon type="setting" />
             <span>Preferences</span>
           </span>
         }

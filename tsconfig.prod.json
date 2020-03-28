@@ -6,8 +6,8 @@
     "module": "es6",
     "target": "es5",
     "paths": {
-      "__Types__": ["src/App/index.d.ts"],
-      "@App/*": ["./src/App/*"],
+      "__Types__": ["src/Core/types.ts"],
+      "@Core/*": ["./src/Core/*"],
       "@Assets/*": ["./src/Assets/*"],
       "@Components/*": ["./src/Components/*"],
       "@Config/*": ["./src/Config/*"],

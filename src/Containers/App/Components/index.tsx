@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu } from "antd";
 import Navbar from "@Containers/Layout/Navbar";
 import Header from "@Containers/Layout/Header";
 
