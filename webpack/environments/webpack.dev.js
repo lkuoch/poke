@@ -1,9 +1,8 @@
 const webpack = require("webpack");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 
 // Config file
-const buildHelper = require("../shared/buildHelper");
+const buildHelper = require("../util/buildHelper");
 const tsConfigFile = buildHelper.getTsConfigFile("development")
 
 module.exports = {

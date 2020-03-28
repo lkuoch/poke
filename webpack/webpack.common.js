@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 // Meta
-const AppMeta = require("./meta.json");
+const AppMeta = require("./util/meta.json");
 
 module.exports = {
   entry: "./src/Core/index.tsx",
