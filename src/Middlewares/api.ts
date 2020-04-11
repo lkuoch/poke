@@ -1,6 +1,6 @@
 import { Middleware, MiddlewareAPI, Dispatch, AnyAction } from "redux";
 import { CALL_API_MIDDLEWARE_TYPE } from "./models";
-import type { Middlewares } from "__Types__";
+import type { Middlewares } from "Core/types";
 
 // Handle call api
 const callApiHandler = async (callAPIPayload: Middlewares.ICallApiPayload) => {

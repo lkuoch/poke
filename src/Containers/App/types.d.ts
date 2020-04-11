@@ -1,5 +1,5 @@
-import { Theme as IAppTheme } from "@Containers/App/models";
-import type { AppConfig, Navbar, Pokemon } from "__Types__";
+import { Theme as IAppTheme } from "Containers/App/models";
+import type { AppConfig, Navbar, Pokemon } from "Core/types";
 import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 
 export namespace Services {}
@@ -14,7 +14,7 @@ export namespace State {
   }
 
   export interface IState {
-    pokeAppConfig: AppConfig.Models.IConfig;
+    pokeAppConfig: AppConfig.Models.IConfig | null;
     theme: IAppTheme;
   }
 

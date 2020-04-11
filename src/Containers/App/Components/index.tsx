@@ -1,11 +1,11 @@
 // Libraries
 import React from "react";
-import { Layout, Menu } from "antd";
-import Navbar from "@Containers/Layout/Navbar";
-import Header from "@Containers/Layout/Header";
+import { Layout } from "antd";
+import Navbar from "Containers/Layout/Navbar";
+import Header from "Containers/Layout/Header";
 
 // Copmonents
-import Pokemon from "@Containers/Content/Pokemon";
+import Pokemon from "Containers/Content/Pokemon";
 
 function App() {
   return (

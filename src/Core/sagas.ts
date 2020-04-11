@@ -1,8 +1,8 @@
 import { all, fork } from "redux-saga/effects";
 
 //* App
-import appSagas, { initSaga } from "@Containers/App/sagas";
-import pokemonSagas from "@Containers/Content/Pokemon/sagas";
+import appSagas, { initSaga } from "Containers/App/sagas";
+import pokemonSagas from "Containers/Content/Pokemon/sagas";
 
 // Global registration of saga components
 export default function* rootSagas() {

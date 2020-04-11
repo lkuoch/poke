@@ -1,5 +1,5 @@
-import { Mode as INavbarMode } from "@Containers/Layout/Navbar/models";
-import { Theme as IAppTheme } from "@Containers/App/models";
+import { Mode as INavbarMode } from "Containers/Layout/Navbar/models";
+import { Theme as IAppTheme } from "Containers/App/models";
 import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 
 export namespace Models {}

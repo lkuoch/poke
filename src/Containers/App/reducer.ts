@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Theme } from "./models";
-import type { App } from "__Types__";
+import type { App } from "Core/types";
 
 // Name of slice
 const name = "APP";

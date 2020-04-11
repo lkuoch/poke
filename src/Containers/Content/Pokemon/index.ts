@@ -6,7 +6,7 @@ import PokemonListComponent from "./Components";
 import { selectors } from "./reducer";
 
 // Types
-import { App, Pokemon } from "__Types__";
+import { App, Pokemon } from "Core/types";
 
 const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedState => {
   const { selectPokemon, selectMeta } = selectors;

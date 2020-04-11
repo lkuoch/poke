@@ -7,11 +7,11 @@ import { actions, selectors } from "./reducer";
 import { Mode as ModeModel } from "./models";
 
 // App component
-import { actions as appActions, selectors as appSelectors } from "@Containers/App/reducer";
-import { Theme as ThemeModel } from "@Containers/App/models";
+import { actions as appActions, selectors as appSelectors } from "Containers/App/reducer";
+import { Theme as ThemeModel } from "Containers/App/models";
 
 // Types
-import { Navbar, App } from "__Types__";
+import { Navbar, App } from "Core/types";
 
 const mapStateToProps = (state: App.State.IRootState): Navbar.State.IMappedState => {
   const { selectMode } = selectors;

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Mode } from "./models";
-import { App, Navbar } from "__Types__";
+import { App, Navbar } from "Core/types";
 
 // Name of slice
 const name = "NAVBAR";

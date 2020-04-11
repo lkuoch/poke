@@ -1,9 +1,9 @@
-import { select, put, take, call, fork, takeLeading, retry } from "redux-saga/effects";
-import { selectors as appSelectors } from "@Containers/App/reducer";
+import { select, put, take, call, fork, takeLeading } from "redux-saga/effects";
+import { selectors as appSelectors } from "Containers/App/reducer";
 import { actions, selectors } from "./reducer";
 import * as services from "./services";
 import { FetchPokemonApiResult } from "./models";
-import { AppConfig, Pokemon } from "__Types__";
+import { AppConfig, Pokemon } from "Core/types";
 
 function* fetchPokemonSaga() {
   // Get config
@@ -23,7 +23,7 @@ function* fetchPokemonSaga() {
   }
   //- MOCK(pokemon.json)
   else {
-    const { pokemon: pokemonMock } = require("@Mock/pokemon.json");
+    const { pokemon: pokemonMock } = require("Mocks/pokemon.json");
 
     // Update it in the store
     console.info("%c Using mock data for pokemon", "color: #ef5350", pokemonMock);

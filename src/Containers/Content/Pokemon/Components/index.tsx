@@ -1,10 +1,9 @@
 import React from "react";
 import { Layout, Card, Col, Row } from "antd";
-import { Pokemon } from "__Types__";
+import { Pokemon } from "Core/types";
 
 //* UI
 const { Content } = Layout;
-const { Meta } = Card;
 
 export default React.memo((props: Pokemon.Redux.IMappedProps) => {
   const { pokemon } = props;
@@ -34,6 +33,7 @@ export default React.memo((props: Pokemon.Redux.IMappedProps) => {
 
   return (
     <Content id="pokemon-content">
+    <h1>ASOIDJASOIDJ </h1>
       <div style={{ background: "#ECECEC", padding: "30px" }}>
         <Row gutter={16}>{renderPokemon()}</Row>
       </div>

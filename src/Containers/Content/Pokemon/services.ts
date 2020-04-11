@@ -1,6 +1,6 @@
 import { RSAA, RSAAAction } from "redux-api-middleware";
 import { FetchPokemonApiResult } from "./models";
-import { Pokemon } from "__Types__";
+import { Pokemon } from "Core/types";
 
 export const createFetchPokemonAction = (endpoint: string): RSAAAction => {
   return {

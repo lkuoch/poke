@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { App, Pokemon } from "__Types__";
+import type { App, Pokemon } from "Core/types";
 
 // Name of slice
 const name = "POKEMON";

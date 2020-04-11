@@ -5,7 +5,7 @@ export namespace Models {}
 export namespace Services {
   export interface IRetrieveNextPokemonLink {
     hasNextLink: boolean;
-    nextLink: string;
+    nextLink: string?;
   }
 }
 

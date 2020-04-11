@@ -1,8 +1,8 @@
 import React from "react";
-import { Menu, Layout, Slider } from "antd";
-import { EnumMenuComponent } from "@Containers/Generic/Components/menu";
+import { Menu, Layout } from "antd";
+import { EnumMenuComponent } from "Containers/Generic/Components/menu";
 import { Mode as ModeModel } from "../models";
-import { Navbar } from "__Types__";
+import { Navbar } from "Core/types";
 
 //* UI
 const { SubMenu } = Menu;
