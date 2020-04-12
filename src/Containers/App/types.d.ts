@@ -18,7 +18,7 @@ export namespace State {
     theme: IAppTheme;
   }
 
-  export interface IMappedState extends IState {}
+  export interface IMappedState extends Partial<IState> {}
 }
 
 export namespace Redux {
@@ -31,7 +31,7 @@ export namespace Redux {
     updateTheme: (payload: IAppTheme) => void;
   }
 
-  export interface IMappedDispatch extends IDispatch {}
+  export interface IMappedDispatch extends Partial<IDispatch> {}
 
   export type IMappedProps = State.IMappedState & IMappedDispatch;
 }

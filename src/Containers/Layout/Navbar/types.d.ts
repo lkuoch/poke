@@ -11,7 +11,7 @@ export namespace State {
     mode: INavbarMode;
   }
 
-  export interface IMappedState extends IState {
+  export interface IMappedState extends Partial<IState> {
     theme: IAppTheme;
   }
 }

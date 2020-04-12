@@ -6,7 +6,7 @@ export interface ICallApiAction extends Action {
 
 export interface ICallApiPayload {
   endpoint: string;
-  types: Array<string>;
+  types: [string, string, string];
   schema: RequestInit;
   retryCount?: Number;
 }

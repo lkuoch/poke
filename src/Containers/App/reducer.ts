@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Theme } from "./models";
-import type { App } from "Core/types";
+import type { AppTypes } from "Core/types";
 
 // Name of slice
 const name = "APP";
 
 // Slice initial state
-const initialState: App.State.IState = {
+const initialState: AppTypes.State.IState = {
   pokeAppConfig: null,
   theme: Theme.Light
 };
 
 // Slice
-const { actions, reducer } = createSlice<App.State.IState, App.Redux.IActions>({
+const { actions, reducer } = createSlice<AppTypes.State.IState, AppTypes.Redux.IActions>({
   name,
   initialState,
   reducers: {
@@ -30,8 +30,8 @@ const { actions, reducer } = createSlice<App.State.IState, App.Redux.IActions>({
 
 // Selectors
 const selectors = {
-  selectPokeConfig: (state: App.State.IRootState) => state[name].pokeAppConfig,
-  selectTheme: (state: App.State.IRootState) => state[name].theme
+  selectPokeConfig: (state: AppTypes.State.IRootState) => state[name].pokeAppConfig,
+  selectTheme: (state: AppTypes.State.IRootState) => state[name].theme
 };
 
 export { initialState, actions, reducer, selectors, name };

@@ -1,11 +1,10 @@
 import { Middleware, MiddlewareAPI, Dispatch, AnyAction } from "redux";
 import { CALL_API_MIDDLEWARE_TYPE } from "./models";
-import type { Middlewares } from "Core/types";
+import type { MiddlewareTypes } from "Core/types";
 
 // Handle call api
-const callApiHandler = async (callAPIPayload: Middlewares.ICallApiPayload) => {
-  // Fetches an API response
-  const callApi = async (callAPIPayload: Middlewares.ICallApiPayload) => {
+const callApiHandler = async (callAPIPayload: MiddlewareTypes.ICallApiPayload) => {
+  const callApi = async (callAPIPayload: MiddlewareTypes.ICallApiPayload) => {
     const response = await fetch(callAPIPayload.endpoint, callAPIPayload.schema);
     const data = await response.json();
     return data;
@@ -36,7 +35,7 @@ const callAPIMiddleware: Middleware<Dispatch> = ({ dispatch }: MiddlewareAPI) =>
   }
 
   // Get body
-  const callAPIPayload = (action as Middlewares.ICallApiAction).payload;
+  const callAPIPayload = (action as MiddlewareTypes.ICallApiAction).payload;
 
   // Get redux types to return
   const [requestType, successType, failureType] = callAPIPayload.types;

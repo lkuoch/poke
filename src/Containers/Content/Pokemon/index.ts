@@ -6,9 +6,9 @@ import PokemonListComponent from "./Components";
 import { selectors } from "./reducer";
 
 // Types
-import { App, Pokemon } from "Core/types";
+import { AppTypes, PokemonTypes } from "Core/types";
 
-const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedState => {
+const mapStateToProps = (state: AppTypes.State.IRootState): PokemonTypes.State.IMappedState => {
   const { selectPokemon, selectMeta } = selectors;
 
   return {
@@ -17,8 +17,8 @@ const mapStateToProps = (state: App.State.IRootState): Pokemon.State.IMappedStat
   };
 };
 
-const mapDispatchToProp = (_dispatch: Dispatch): Pokemon.Redux.IMappedDispatch => {
+const mapDispatchToProp = (_dispatch: Dispatch): PokemonTypes.Redux.IMappedDispatch => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProp)(PokemonListComponent as any);
+export default connect(mapStateToProps, mapDispatchToProp)(PokemonListComponent);

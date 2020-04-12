@@ -1,56 +1,31 @@
 import React from "react";
-import { Menu, Layout } from "antd";
-import { EnumMenuComponent } from "Containers/Generic/Components/menu";
-import { Mode as ModeModel } from "../models";
-import { Navbar } from "Core/types";
+// import * as Models from "../models";
+import type { NavbarTypes } from "Core/types";
 
-//* UI
-const { SubMenu } = Menu;
-const { Sider } = Layout;
-
-export default React.memo((props: Navbar.Redux.IMappedProps) => {
-  //* States
-  const { mode, theme } = props;
-
-  //* Dispatches
-  const { updateMode } = props;
-
-  //* Renders
-  const changeMenuMode = () => {
-    const menuItems = EnumMenuComponent({
-      SelectedItem: mode,
-      Items: ModeModel
-    });
-
-    return (
-      <Menu theme={theme} onClick={(e) => updateMode(e.key as ModeModel)}>
-        {menuItems}
-      </Menu>
-    );
-  };
-
-  const renderBody = (
-    <Menu defaultSelectedKeys={["1", mode]} forceSubMenuRender={true} mode={mode} theme={theme}>
-      <Menu.Item key="1">Pokemon</Menu.Item>
-      <Menu.Item key="2">Navigation Two</Menu.Item>
-      <SubMenu
-        key="sub2"
-        title={
-          <span>
-            <span>Preferences</span>
-          </span>
-        }
-      >
-        <SubMenu key="changeMenuMode" title={<span>Menu</span>}>
-          {changeMenuMode()}
-        </SubMenu>
-      </SubMenu>
-    </Menu>
-  );
+function Navbar(props: NavbarTypes.Redux.IMappedProps) {
+  // const { mode, theme, updateMode } = props;
 
   return (
-    <Sider id="navbar" trigger={null} theme={theme} collapsible>
-      {renderBody}
-    </Sider>
+    <div className="ui pointing menu">
+      <div role="menuitem" className="active item" onClick={() => console.log("a")}>
+        Home
+      </div>
+      <div role="menuitem" className="item" onClick={() => console.log("b")}>
+        Messages
+      </div>
+      <div role="menuitem" className="item" onClick={() => console.log("c")}>
+        Friends
+      </div>
+      <div className="right menu">
+        <div className="item">
+          <div className="ui transparent icon input">
+            <input type="text" placeholder="Search..." />
+            <i className="search link icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-});
+}
+
+export default React.memo(Navbar);

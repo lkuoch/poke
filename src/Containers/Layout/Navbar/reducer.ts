@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Mode } from "./models";
-import { App, Navbar } from "Core/types";
+import { AppTypes, NavbarTypes } from "Core/types";
 
 // Name of slice
 const name = "NAVBAR";
 
 // Slice initial state
-const initialState: Navbar.State.IState = {
+const initialState: NavbarTypes.State.IState = {
   mode: Mode.Inline
 };
 
 // Slice
-const { actions, reducer } = createSlice<Navbar.State.IState, Navbar.Redux.IActions>({
+const { actions, reducer } = createSlice<NavbarTypes.State.IState, NavbarTypes.Redux.IActions>({
   name,
   initialState,
   reducers: {
@@ -23,7 +23,7 @@ const { actions, reducer } = createSlice<Navbar.State.IState, Navbar.Redux.IActi
 
 // Selectors
 const selectors = {
-  selectMode: (state: App.State.IRootState) => state[name].mode
+  selectMode: (state: AppTypes.State.IRootState) => state[name].mode
 };
 
 export { initialState, actions, reducer, selectors, name };

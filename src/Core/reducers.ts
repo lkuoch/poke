@@ -4,10 +4,10 @@ import { combineReducers } from "redux";
 import { reducer as AppReducer } from "Containers/App/reducer";
 
 //* Content
-import { reducer as PokemonReducer } from "Containers/Content/Pokemon/reducer";
+import { reducer as PokemonReducer } from "Containers/Pokemon/reducer";
 
 //* Layout
-import { reducer as NavbarReducer } from "Containers/Layout/Navbar/reducer";
+import { reducer as NavbarReducer } from "Containers/Navbar/reducer";
 
 export default combineReducers({
   APP: AppReducer,

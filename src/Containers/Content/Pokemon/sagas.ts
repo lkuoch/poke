@@ -3,14 +3,14 @@ import { selectors as appSelectors } from "Containers/App/reducer";
 import { actions, selectors } from "./reducer";
 import * as services from "./services";
 import { FetchPokemonApiResult } from "./models";
-import { AppConfig, Pokemon } from "Core/types";
+import { AppConfigTypes, PokemonTypes } from "Core/types";
 
 function* fetchPokemonSaga() {
   // Get config
   const {
     endpoints,
     features: { pokemon }
-  }: AppConfig.Models.IConfig = yield select(appSelectors.selectPokeConfig);
+  }: AppConfigTypes.Models.IConfig = yield select(appSelectors.selectPokeConfig);
 
   //+ TOGGLE(pokemon._enabled)
   if (pokemon.enabled) {
@@ -31,7 +31,7 @@ function* fetchPokemonSaga() {
   }
 }
 
-function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IMeta) {
+function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: PokemonTypes.State.IMeta) {
   // Reassign `_fetchMeta` so we can mutate it
   const fetchMeta = Object.assign({}, _fetchMeta);
 
@@ -65,7 +65,7 @@ function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: Pokemon.State.IMet
   yield put(actions.addPokemon(fetchPokemonResult));
 
   // Get the next pokemon link
-  const { hasNextLink, nextLink }: Pokemon.Services.IRetrieveNextPokemonLink = yield call(
+  const { hasNextLink, nextLink }: PokemonTypes.Services.IRetrieveNextPokemonLink = yield call(
     services.retrieveNextPokemonLink,
     fetchPokemonResult
   );

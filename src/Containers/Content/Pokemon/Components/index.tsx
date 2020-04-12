@@ -1,11 +1,11 @@
 import React from "react";
 import { Layout, Card, Col, Row } from "antd";
-import { Pokemon } from "Core/types";
+import { PokemonTypes } from "Core/types";
 
 //* UI
 const { Content } = Layout;
 
-export default React.memo((props: Pokemon.Redux.IMappedProps) => {
+export default React.memo((props: PokemonTypes.Redux.IMappedProps) => {
   const { pokemon } = props;
 
   // Fallback, should put a spinner

@@ -1,13 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import 'fomantic-ui-css/semantic.min.css';
 
 import configureStore from "Core/store";
 import * as serviceWorker from "Core/serviceWorker";
 import App from "Containers/App/Components";
-
-// Load styles
-import "antd/dist/antd.css";
 
 const store = configureStore();
 

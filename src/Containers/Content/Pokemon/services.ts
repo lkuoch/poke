@@ -1,6 +1,6 @@
 import { RSAA, RSAAAction } from "redux-api-middleware";
 import { FetchPokemonApiResult } from "./models";
-import { Pokemon } from "Core/types";
+import { PokemonTypes } from "Core/types";
 
 export const createFetchPokemonAction = (endpoint: string): RSAAAction => {
   return {
@@ -21,7 +21,7 @@ export const createFetchPokemonAction = (endpoint: string): RSAAAction => {
 
 export const retrieveNextPokemonLink = (
   payload: any
-): Pokemon.Services.IRetrieveNextPokemonLink => {
+): PokemonTypes.Services.IRetrieveNextPokemonLink => {
   if (payload?.next) {
     return {
       hasNextLink: true,
