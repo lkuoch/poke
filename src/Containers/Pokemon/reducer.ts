@@ -40,8 +40,8 @@ const { actions, reducer } = createSlice<PokemonTypes.State.IState, PokemonTypes
 
 // Selectors
 const selectors = {
-  selectMeta: (state: AppTypes.State.IRootState) => state[name].meta,
-  selectPokemon: (state: AppTypes.State.IRootState) => state[name].pokemon
+  selectMeta: (state: AppTypes.State.IRootState) => state.CONTEXT[name].meta,
+  selectPokemon: (state: AppTypes.State.IRootState) => state.CONTEXT[name].pokemon
 };
 
 export { initialState, actions, reducer, selectors, name };

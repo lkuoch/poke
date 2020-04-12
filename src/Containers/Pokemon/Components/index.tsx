@@ -36,7 +36,7 @@ export default React.memo((props: PokemonTypes.Redux.IMappedProps) => {
         const pokemonName = String(r.name.charAt(0).toUpperCase() + r.name.slice(1));
         return (
           <Card key={`${pIdx}${rIdx}`} color={getColor(rIdx)}>
-            <Image src={placeHolderImage} wrapped ui={false} />
+            <Image src={placeHolderImage} alt="pokemon-image" wrapped ui={false} />
             <Card.Content>
               <Card.Header>{pokemonName}</Card.Header>
               <Card.Meta></Card.Meta>

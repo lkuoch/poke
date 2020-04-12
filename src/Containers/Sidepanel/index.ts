@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 import Sidepanel from "./Components";
 
 const mapStateToProps = (state: any): any => {
-  return null;
+  return {};
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): any => {
-  return null;
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidepanel);

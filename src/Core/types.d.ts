@@ -2,6 +2,9 @@
 export type { default as AppTypes } from "Containers/App/types";
 export type { default as AppConfigTypes } from "Config/types";
 
+//* Database
+export type { default as DatabaseTypes } from "Database/types";
+
 //* Middlewares
 export type { default as MiddlewareTypes } from "Middlewares/types";
 

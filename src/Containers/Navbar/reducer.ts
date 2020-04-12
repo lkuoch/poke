@@ -23,7 +23,7 @@ const { actions, reducer } = createSlice<NavbarTypes.State.IState, NavbarTypes.R
 
 // Selectors
 const selectors = {
-  selectMode: (state: AppTypes.State.IRootState) => state[name].mode
+  selectMode: (state: AppTypes.State.IRootState) => state.CONTEXT[name].mode
 };
 
 export { initialState, actions, reducer, selectors, name };

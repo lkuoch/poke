@@ -30,8 +30,8 @@ const { actions, reducer } = createSlice<AppTypes.State.IState, AppTypes.Redux.I
 
 // Selectors
 const selectors = {
-  selectPokeConfig: (state: AppTypes.State.IRootState) => state[name].pokeAppConfig,
-  selectTheme: (state: AppTypes.State.IRootState) => state[name].theme
+  selectPokeConfig: (state: AppTypes.State.IRootState) => state.CONTEXT[name].pokeAppConfig,
+  selectTheme: (state: AppTypes.State.IRootState) => state.CONTEXT[name].theme
 };
 
 export { initialState, actions, reducer, selectors, name };

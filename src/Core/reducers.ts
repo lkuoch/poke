@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
 
 //* App
-import { reducer as AppReducer } from "Containers/App/reducer";
+import { reducer as ContextReducer } from "Containers/App/reducer";
+
+//* Database
+import { reducer as DatabaseReducer } from "Database/reducer";
 
 //* Content
 import { reducer as PokemonReducer } from "Containers/Pokemon/reducer";
@@ -10,7 +13,11 @@ import { reducer as PokemonReducer } from "Containers/Pokemon/reducer";
 import { reducer as NavbarReducer } from "Containers/Navbar/reducer";
 
 export default combineReducers({
-  APP: AppReducer,
-  POKEMON: PokemonReducer,
-  NAVBAR: NavbarReducer,
+  CONTEXT: combineReducers({
+    APP: ContextReducer,
+    NAVBAR: NavbarReducer,
+    POKEMON: PokemonReducer
+  }),
+
+  DATABASE: DatabaseReducer
 });
