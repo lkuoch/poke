@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import state from "./state";
-import type { DatabaseTypes } from "Core/types";
+import type { AppTypes, DatabaseTypes } from "Core/types";
 
 // Name of slice
 const name = "Database";
@@ -16,6 +16,8 @@ const { reducer } = createSlice<DatabaseTypes.State.IState, DatabaseTypes.Redux.
 });
 
 // Selectors
-const selectors = {};
+const selectors = {
+  selectPokemon: (state: AppTypes.Root.IRootState) => state.DATABASE.pokemon
+};
 
 export { initialState, reducer, selectors, name };

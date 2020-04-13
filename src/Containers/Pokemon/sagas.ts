@@ -1,80 +1,12 @@
-import { select, put, take, call, fork, takeLeading } from "redux-saga/effects";
-import { selectors as appSelectors } from "Containers/App/reducer";
-import { actions, selectors } from "./reducer";
-import * as services from "./services";
-import { FetchPokemonApiResult } from "./models";
-import { AppConfigTypes, PokemonTypes } from "Core/types";
+import { put, call, takeLeading } from "redux-saga/effects";
+import { actions } from "./reducer";
+import * as dataService from "Services/dataService";
+import type { PokemonTypes } from "Core/types";
 
-function* fetchPokemonSaga() {
-  // Get config
-  const {
-    endpoints,
-    features: { pokemon }
-  }: AppConfigTypes.Models.IConfig = yield select(appSelectors.selectPokeConfig);
+function* initPokemonViewSaga(action: PokemonTypes.Redux.IActions["initView"]) {
+  const pokemonIds = yield call(dataService.RetrieveObjectKeysAsArray, action.payload);
 
-  //+ TOGGLE(pokemon._enabled)
-  if (pokemon.enabled) {
-    // Get config attributes
-    const { testPokemon } = endpoints;
-
-    // Get fetch fetchMeta
-    const fetchMeta = yield select(selectors.selectMeta);
-    yield fork(fetchNextPokemon, testPokemon, fetchMeta);
-  }
-  //- MOCK(pokemon.json)
-  else {
-    const { pokemon: pokemonMock } = require("Mocks/pokemon.json");
-
-    // Update it in the store
-    console.info("%c Using mock data for pokemon", "color: #ef5350", pokemonMock);
-    yield put(actions.updatePokemon(pokemonMock));
-  }
+  yield put(actions.updateView(pokemonIds));
 }
 
-function* fetchNextPokemon(fetchEndpoint: string, _fetchMeta: PokemonTypes.State.IMeta) {
-  // Reassign `_fetchMeta` so we can mutate it
-  const fetchMeta = Object.assign({}, _fetchMeta);
-
-  // Stop fetching after we hit out limit
-  if (fetchMeta.pagesToFetch === 0) return;
-
-  // Dispatch API middleware action
-  yield put<any>(services.createFetchPokemonAction(fetchEndpoint));
-
-  // Wait for result
-  const { type: fetchPokemonResultType, payload: fetchPokemonResult } = yield take([
-    FetchPokemonApiResult.SUCCESS,
-    FetchPokemonApiResult.FAILURE
-  ]);
-
-  // Scenario 1: Network request failed -> Try until we have no more retry attempts left
-  if (fetchPokemonResultType === FetchPokemonApiResult.FAILURE) {
-    if (fetchMeta.retryAttempts > 0) {
-      console.log(`Retry attempt #${fetchMeta.retryAttempts} fetching from ${fetchEndpoint} again`);
-
-      fetchMeta.retryAttempts -= 1;
-      return fetchNextPokemon(fetchEndpoint, fetchMeta);
-    } else {
-      // Can't retrieve the object which means we can't get the next pokemon
-      // Dispatch some kind of error?
-      console.error("Something terribly went wrong");
-    }
-  }
-
-  // Scenario 2: Fetched Pokemon; update it in the store
-  yield put(actions.addPokemon(fetchPokemonResult));
-
-  // Get the next pokemon link
-  const { hasNextLink, nextLink }: PokemonTypes.Services.IRetrieveNextPokemonLink = yield call(
-    services.retrieveNextPokemonLink,
-    fetchPokemonResult
-  );
-
-  // Call the saga again until we don't have anymore links
-  if (hasNextLink) {
-    fetchMeta.pagesToFetch -= 1;
-    return yield fork(fetchNextPokemon, nextLink, fetchMeta);
-  }
-}
-
-export default [takeLeading(actions.fetchPokemon, fetchPokemonSaga)];
+export default [takeLeading(actions.initView, initPokemonViewSaga)];

@@ -1,41 +1,50 @@
-import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
+import type {
+  SliceCaseReducers,
+  CaseReducer,
+  Action,
+  PayloadAction,
+  AnyAction
+} from "@reduxjs/toolkit";
+import type { DatabaseTypes } from "Core/types";
 
 export namespace Models {}
 
-export namespace Services {
-  export interface IRetrieveNextPokemonLink {
-    hasNextLink: boolean;
-    nextLink: string?;
-  }
-}
+export namespace Services {}
 
 export namespace State {
-  export interface IMeta {
-    pagesToFetch: number;
-    retryAttempts: number;
-  }
-
   export interface IState {
-    meta: IMeta;
-    pokemon: Array<Object>;
+    // Display pokemon view
+    view: {
+      ids: Array<string>;
+      currentId: string?;
+    };
+
+    meta: {
+      hasLoaded: boolean;
+    };
   }
 
-  export interface IMappedState extends Partial<State.IState> {
-    meta: State.IMeta;
-    pokemon: Array<Object>;
+  export interface IMappedState extends State.IState {
+    data: {
+      pokemon: DatabaseTypes.Schema.pokemon;
+    };
   }
 }
 
 export namespace Redux {
-  export interface IActions extends SliceCaseReducers<State.IState> {
-    fetchPokemon: CaseReducer<State.IState>;
-    updatePokemon: CaseReducer<State.IState, PayloadAction<Array<Object>>>;
-    addPokemon: CaseReducer<State.IState, PayloadAction<Object>>;
+  export interface IActions {
+    initView: PayloadAction<DatabaseTypes.Schema.pokemon.identifier>;
+    updateView: PayloadAction<Array<string>>;
   }
 
-  export interface IDispatch {}
+  export interface ISliceReducers extends SliceCaseReducers<State.IState> {
+    initView: CaseReducer<State.IState, IActions.initView>;
+    updateView: CaseReducer<State.IState, IActions.updateView>;
+  }
 
-  export interface IMappedDispatch extends Partial<IDispatch> {}
+  export interface IMappedDispatch {
+    initView: (payload: IActions["initView"]["payload"]) => void;
+  }
 
   export type IMappedProps = State.IMappedState & IMappedDispatch;
 }

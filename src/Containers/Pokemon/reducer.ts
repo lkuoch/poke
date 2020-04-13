@@ -6,42 +6,39 @@ const name = "POKEMON";
 
 // Slice initial state
 const initialState: PokemonTypes.State.IState = {
-  meta: {
-    // How many slices we should fetch at a time
-    pagesToFetch: 5,
-
-    // How many times we should attempt each slice
-    retryAttempts: 3
+  view: {
+    ids: [],
+    currentId: null
   },
 
-  // List of pokemon
-  pokemon: []
+  meta: {
+    hasLoaded: false
+  }
 };
 
 // Slice
-const { actions, reducer } = createSlice<PokemonTypes.State.IState, PokemonTypes.Redux.IActions>({
+const { actions, reducer } = createSlice<
+  PokemonTypes.State.IState,
+  PokemonTypes.Redux.ISliceReducers
+>({
   name,
   initialState,
   reducers: {
-    // Add single pokemon
-    addPokemon: (state, { payload }) => {
-      state.pokemon.push(payload);
-    },
+    // When pokemon component loads, calculate view
+    initView: (state) => state,
 
-    // Update pokemon
-    updatePokemon: (state, { payload }) => {
-      state.pokemon = payload;
-    },
-
-    // API
-    fetchPokemon: (state) => state
+    updateView: (state, { payload }) => {
+      state.view.ids = payload;
+      state.view.currentId = payload[0];
+      state.meta.hasLoaded = true;
+    }
   }
 });
 
 // Selectors
 const selectors = {
-  selectMeta: (state: AppTypes.State.IRootState) => state.CONTEXT[name].meta,
-  selectPokemon: (state: AppTypes.State.IRootState) => state.CONTEXT[name].pokemon
+  selectMeta: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].meta,
+  selectView: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view
 };
 
 export { initialState, actions, reducer, selectors, name };

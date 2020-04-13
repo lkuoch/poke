@@ -152,7 +152,7 @@ export namespace Redux {
 }
 
 export namespace Schema {
-  export interface Abilities {
+  export interface abilities {
     identifier: { [key: string]: string };
     generation_id: { [key: string]: number };
     is_main_series: { [key: string]: number };
