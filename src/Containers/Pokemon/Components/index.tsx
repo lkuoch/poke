@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
-import { Dimmer, Loader, Segment, Card, Image, Label } from "semantic-ui-react";
+import { Dimmer, Loader, Segment, Card, Image } from "semantic-ui-react";
+
+import { RetrievePokemonImage } from "Services/dataService";
+import { RetrievePokemonImageOptions } from "Services/models";
+
 import type { PokemonTypes } from "Core/types";
-import type { SemanticCOLORS } from "semantic-ui-react";
+// import type { SemanticCOLORS } from "semantic-ui-react";
 
 export default React.memo((props: PokemonTypes.Redux.IMappedProps) => {
   const { meta, view, data, initView } = props;
 
   // Create view when pokemon data has loaded
   useEffect(() => {
-    initView(data.pokemon.identifier);
-  }, [meta.hasLoaded === false]);
+    if (!meta.hasLoaded) {
+      initView(data.pokemon.identifier);
+    }
+  }, [meta, data, initView]);
 
   if (!meta.hasLoaded) {
     return (
@@ -30,7 +36,7 @@ export default React.memo((props: PokemonTypes.Redux.IMappedProps) => {
           return (
             <Card key={`${id}`}>
               <Image
-                src="https://fomantic-ui.com/images/wireframe/white-image.png"
+                src={RetrievePokemonImage(id, RetrievePokemonImageOptions.Official)}
                 alt={pokemonName}
                 wrapped
                 ui={false}
