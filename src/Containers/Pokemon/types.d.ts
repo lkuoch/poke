@@ -1,10 +1,4 @@
-import type {
-  SliceCaseReducers,
-  CaseReducer,
-  Action,
-  PayloadAction,
-  AnyAction
-} from "@reduxjs/toolkit";
+import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 import type { DatabaseTypes } from "Core/types";
 
 export namespace Models {}
@@ -16,7 +10,7 @@ export namespace State {
     // Display pokemon view
     view: {
       ids: Array<string>;
-      currentId: string?;
+      currentId: ?string;
     };
 
     meta: {

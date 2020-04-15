@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import 'fomantic-ui-css/semantic.min.css';
+
+import "fomantic-ui-css/semantic.min.css";
+import "./index.scss";
 
 import configureStore from "Core/store";
 import * as serviceWorker from "Core/serviceWorker";
@@ -14,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("pk-root")
 );
 
 serviceWorker.register();

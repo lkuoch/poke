@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { Card, Image } from "semantic-ui-react";
 
-import Loader from "Components/Loader";
-import { RetrievePokemonImage } from "Services/dataService";
-import { RetrievePokemonImageOptions } from "Services/models";
+import Loader, { LoaderOptions } from "Components/loader";
+import { RetrievePokemonImage, RetrievePokemonImageOptions } from "Services/pokemonService";
 
 import type { PokemonTypes } from "Core/types";
-// import type { SemanticCOLORS } from "semantic-ui-react";
 
 function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
   const { meta, view, data, initView } = props;
@@ -22,7 +19,9 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
 
   // Show loader when loading pokemon
   if (!meta.hasLoaded) {
-    return <Loader loadingContent="Loading pokemon..." />;
+    return (
+      <Loader loadingContent="Loading pokemon..." loaderOptions={LoaderOptions.ShowRandomPokemon} />
+    );
   }
 
   // Grid cell of pokemon data
@@ -35,22 +34,16 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
 
     return (
       <div style={style}>
-        {
-          <Card key={`${id}`}>
-            <Image
-              src={RetrievePokemonImage(id, RetrievePokemonImageOptions.Official)}
-              alt={pokemonName}
-              wrapped
-              ui={false}
-            />
-
-            <Card.Content>
-              <Card.Header>{`${formattedPokemonName} (${id})`}</Card.Header>
-              <Card.Meta></Card.Meta>
-              <Card.Description></Card.Description>
-            </Card.Content>
-          </Card>
-        }
+        <div key={`${id}`} className="ui fluid card">
+          <img
+            className="ui image"
+            src={RetrievePokemonImage(id, RetrievePokemonImageOptions.Official)}
+            alt={pokemonName}
+          />
+          <div className="content">
+            <a className="header">{formattedPokemonName}</a>
+          </div>
+        </div>
       </div>
     );
   };

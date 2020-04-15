@@ -11,3 +11,6 @@ export type { default as MiddlewareTypes } from "Middlewares/types";
 //* Containers
 export type { default as NavbarTypes } from "Containers/Navbar/types";
 export type { default as PokemonTypes } from "Containers/Pokemon/types";
+
+//* Components
+export type { default as ComponentTypes } from "Components/types";

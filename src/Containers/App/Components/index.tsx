@@ -7,7 +7,7 @@ import Pokemon from "Containers/Pokemon";
 
 function App() {
   return (
-    <div id="app" className="ui grid">
+    <div id="pk-app" className="ui grid">
       <div className="sixteen wide column">
         <Navbar />
       </div>
