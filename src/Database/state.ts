@@ -1,10 +1,8 @@
 import abilities from "./Data/abilities.json";
-import evolution_chains from "./Data/evolution_chains.json";
 import genders from "./Data/genders.json";
 import moves from "./Data/moves.json";
 import pokemon from "./Data/pokemon.json";
 import pokemon_abilities from "./Data/pokemon_abilities.json";
-import pokemon_color_names from "./Data/pokemon_color_names.json";
 import pokemon_colors from "./Data/pokemon_colors.json";
 import pokemon_dex_numbers from "./Data/pokemon_dex_numbers.json";
 import pokemon_egg_groups from "./Data/pokemon_egg_groups.json";
@@ -28,15 +26,14 @@ import pokemon_stats from "./Data/pokemon_stats.json";
 import pokemon_types from "./Data/pokemon_types.json";
 import stats from "./Data/stats.json";
 import types from "./Data/types.json";
+import versions from "./Data/versions.json";
 
 export default {
   abilities,
-  evolution_chains,
   genders,
   moves,
   pokemon,
   pokemon_abilities,
-  pokemon_color_names,
   pokemon_colors,
   pokemon_dex_numbers,
   pokemon_egg_groups,
@@ -59,5 +56,6 @@ export default {
   pokemon_stats,
   pokemon_types,
   stats,
-  types
+  types,
+  versions
 };

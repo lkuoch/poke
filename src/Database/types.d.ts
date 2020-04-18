@@ -2,7 +2,7 @@ import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/too
 
 export namespace State {
   export interface IState {
-    abilities?: Schema.abilities;
+    abilities: Schema.abilities;
     ability_changelog?: Schema.ability_changelog;
     ability_changelog_prose?: Schema.ability_changelog_prose;
     ability_flavor_text?: Schema.ability_flavor_text;
@@ -84,7 +84,7 @@ export namespace State {
     move_names?: Schema.move_names;
     move_target_prose?: Schema.move_target_prose;
     move_targets?: Schema.move_targets;
-    moves?: Schema.moves;
+    moves: Schema.moves;
     nature_battle_style_preferences?: Schema.nature_battle_style_preferences;
     nature_names?: Schema.nature_names;
     nature_pokeathlon_stats?: Schema.nature_pokeathlon_stats;
@@ -99,8 +99,7 @@ export namespace State {
     pokedexes?: Schema.pokedexes;
     pokemon: Schema.pokemon;
     pokemon_abilities: Schema.pokemon_abilities;
-    pokemon_color_names?: Schema.pokemon_color_names;
-    pokemon_colors?: Schema.pokemon_colors;
+    pokemon_colors: Schema.pokemon_colors;
     pokemon_dex_numbers?: Schema.pokemon_dex_numbers;
     pokemon_egg_groups?: Schema.pokemon_egg_groups;
     pokemon_evolution?: Schema.pokemon_evolution;
@@ -108,15 +107,14 @@ export namespace State {
     pokemon_form_names?: Schema.pokemon_form_names;
     pokemon_form_pokeathlon_stats?: Schema.pokemon_form_pokeathlon_stats;
     pokemon_forms?: Schema.pokemon_forms;
-    pokemon_game_indices?: Schema.pokemon_game_indices;
-    pokemon_habitat_names?: Schema.pokemon_habitat_names;
-    pokemon_habitats?: Schema.pokemon_habitats;
+    pokemon_game_indices: Schema.pokemon_game_indices;
+    pokemon_habitats: Schema.pokemon_habitats;
     pokemon_items?: Schema.pokemon_items;
     pokemon_moves?: Schema.pokemon_moves;
     pokemon_move_method_prose?: Schema.pokemon_move_method_prose;
     pokemon_move_methods?: Schema.pokemon_move_methods;
     pokemon_shape_prose?: Schema.pokemon_shape_prose;
-    pokemon_shapes?: Schema.pokemon_shapes;
+    pokemon_shapes: Schema.pokemon_shapes;
     pokemon_species: Schema.pokemon_species;
     pokemon_species_flavor_summaries?: Schema.pokemon_species_flavor_summaries;
     pokemon_species_flavor_text?: Schema.pokemon_species_flavor_text;
@@ -138,7 +136,7 @@ export namespace State {
     version_group_regions?: Schema.version_group_regions;
     version_groups?: Schema.version_groups;
     version_names?: Schema.version_names;
-    versions?: Schema.versions;
+    versions: Schema.versions;
   }
 }
 
@@ -773,8 +771,10 @@ export namespace Schema {
   }
 
   export interface pokemon_game_indices {
-    game_index: { [key: string]: number };
-    version_id: { [key: string]: number };
+    [key: string]: Array<{
+      game_index: number;
+      version_id: number;
+    }>;
   }
 
   export interface pokemon_habitat_names {
