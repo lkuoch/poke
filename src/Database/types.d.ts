@@ -2,142 +2,143 @@ import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/too
 
 export namespace State {
   export interface IState {
-    abilities: Schema.abilities;
-    ability_changelog: Schema.ability_changelog;
-    ability_changelog_prose: Schema.ability_changelog_prose;
-    ability_flavor_text: Schema.ability_flavor_text;
-    ability_names: Schema.ability_names;
-    ability_prose: Schema.ability_prose;
-    berries: Schema.berries;
-    berry_firmness: Schema.berry_firmness;
-    berry_firmness_names: Schema.berry_firmness_names;
-    berry_flavors: Schema.berry_flavors;
-    characteristic_text: Schema.characteristic_text;
-    characteristics: Schema.characteristics;
-    contest_combos: Schema.contest_combos;
-    contest_effect_prose: Schema.contest_effect_prose;
-    contest_effects: Schema.contest_effects;
-    contest_type_names: Schema.contest_type_names;
-    contest_types: Schema.contest_types;
-    egg_group_prose: Schema.egg_group_prose;
-    egg_groups: Schema.egg_groups;
-    encounter_condition_prose: Schema.encounter_condition_prose;
-    encounter_condition_value_map: Schema.encounter_condition_value_map;
-    encounter_condition_value_prose: Schema.encounter_condition_value_prose;
-    encounter_condition_values: Schema.encounter_condition_values;
-    encounter_conditions: Schema.encounter_conditions;
-    encounter_method_prose: Schema.encounter_method_prose;
-    encounter_methods: Schema.encounter_methods;
-    encounter_slots: Schema.encounter_slots;
-    encounters: Schema.encounters;
-    evolution_chains: Schema.evolution_chains;
-    evolution_trigger_prose: Schema.evolution_trigger_prose;
-    evolution_triggers: Schema.evolution_triggers;
-    experience: Schema.experience;
-    genders: Schema.genders;
-    generation_names: Schema.generation_names;
-    generations: Schema.generations;
-    growth_rate_prose: Schema.growth_rate_prose;
-    growth_rates: Schema.growth_rates;
-    item_categories: Schema.item_categories;
-    item_category_prose: Schema.item_category_prose;
-    item_flag_map: Schema.item_flag_map;
-    item_flag_prose: Schema.item_flag_prose;
-    item_flags: Schema.item_flags;
-    item_flavor_summaries: Schema.item_flavor_summaries;
-    item_flavor_text: Schema.item_flavor_text;
-    item_fling_effect_prose: Schema.item_fling_effect_prose;
-    item_game_indices: Schema.item_game_indices;
-    item_names: Schema.item_names;
-    item_pocket_names: Schema.item_pocket_names;
-    item_pockets: Schema.item_pockets;
-    item_prose: Schema.item_prose;
-    items: Schema.items;
-    language_names: Schema.language_names;
-    languages: Schema.languages;
-    location_area_encounter_rates: Schema.location_area_encounter_rates;
-    location_area_prose: Schema.location_area_prose;
-    location_areas: Schema.location_areas;
-    location_game_indices: Schema.location_game_indices;
-    location_names: Schema.location_names;
-    locations: Schema.locations;
-    machines: Schema.machines;
-    move_battle_style_prose: Schema.move_battle_style_prose;
-    move_battle_styles: Schema.move_battle_styles;
-    move_changelog: Schema.move_changelog;
-    move_damage_class_prose: Schema.move_damage_class_prose;
-    move_damage_classes: Schema.move_damage_classes;
-    move_effect_changelog: Schema.move_effect_changelog;
-    move_effect_changelog_prose: Schema.move_effect_changelog_prose;
-    move_effect_prose: Schema.move_effect_prose;
-    move_flag_map: Schema.move_flag_map;
-    move_flag_prose: Schema.move_flag_prose;
-    move_flags: Schema.move_flags;
-    move_flavor_summaries: Schema.move_flavor_summaries;
-    move_flavor_text: Schema.move_flavor_text;
-    move_meta: Schema.move_meta;
-    move_meta_ailment_names: Schema.move_meta_ailment_names;
-    move_meta_ailments: Schema.move_meta_ailments;
-    move_meta_categories: Schema.move_meta_categories;
-    move_meta_category_prose: Schema.move_meta_category_prose;
-    move_meta_stat_changes: Schema.move_meta_stat_changes;
-    move_names: Schema.move_names;
-    move_target_prose: Schema.move_target_prose;
-    move_targets: Schema.move_targets;
-    moves: Schema.moves;
-    nature_battle_style_preferences: Schema.nature_battle_style_preferences;
-    nature_names: Schema.nature_names;
-    nature_pokeathlon_stats: Schema.nature_pokeathlon_stats;
-    natures: Schema.natures;
-    pal_park: Schema.pal_park;
-    pal_park_area_names: Schema.pal_park_area_names;
-    pal_park_areas: Schema.pal_park_areas;
-    pokeathlon_stat_names: Schema.pokeathlon_stat_names;
-    pokeathlon_stats: Schema.pokeathlon_stats;
-    pokedex_prose: Schema.pokedex_prose;
-    pokedex_version_groups: Schema.pokedex_version_groups;
-    pokedexes: Schema.pokedexes;
+    abilities?: Schema.abilities;
+    ability_changelog?: Schema.ability_changelog;
+    ability_changelog_prose?: Schema.ability_changelog_prose;
+    ability_flavor_text?: Schema.ability_flavor_text;
+    ability_names?: Schema.ability_names;
+    ability_prose?: Schema.ability_prose;
+    berries?: Schema.berries;
+    berry_firmness?: Schema.berry_firmness;
+    berry_firmness_names?: Schema.berry_firmness_names;
+    berry_flavors?: Schema.berry_flavors;
+    characteristic_text?: Schema.characteristic_text;
+    characteristics?: Schema.characteristics;
+    contest_combos?: Schema.contest_combos;
+    contest_effect_prose?: Schema.contest_effect_prose;
+    contest_effects?: Schema.contest_effects;
+    contest_type_names?: Schema.contest_type_names;
+    contest_types?: Schema.contest_types;
+    egg_group_prose?: Schema.egg_group_prose;
+    egg_groups?: Schema.egg_groups;
+    encounter_condition_prose?: Schema.encounter_condition_prose;
+    encounter_condition_value_map?: Schema.encounter_condition_value_map;
+    encounter_condition_value_prose?: Schema.encounter_condition_value_prose;
+    encounter_condition_values?: Schema.encounter_condition_values;
+    encounter_conditions?: Schema.encounter_conditions;
+    encounter_method_prose?: Schema.encounter_method_prose;
+    encounter_methods?: Schema.encounter_methods;
+    encounter_slots?: Schema.encounter_slots;
+    encounters?: Schema.encounters;
+    evolution_chains?: Schema.evolution_chains;
+    evolution_trigger_prose?: Schema.evolution_trigger_prose;
+    evolution_triggers?: Schema.evolution_triggers;
+    experience?: Schema.experience;
+    genders?: Schema.genders;
+    generation_names?: Schema.generation_names;
+    generations?: Schema.generations;
+    growth_rate_prose?: Schema.growth_rate_prose;
+    growth_rates?: Schema.growth_rates;
+    item_categories?: Schema.item_categories;
+    item_category_prose?: Schema.item_category_prose;
+    item_flag_map?: Schema.item_flag_map;
+    item_flag_prose?: Schema.item_flag_prose;
+    item_flags?: Schema.item_flags;
+    item_flavor_summaries?: Schema.item_flavor_summaries;
+    item_flavor_text?: Schema.item_flavor_text;
+    item_fling_effect_prose?: Schema.item_fling_effect_prose;
+    item_game_indices?: Schema.item_game_indices;
+    item_names?: Schema.item_names;
+    item_pocket_names?: Schema.item_pocket_names;
+    item_pockets?: Schema.item_pockets;
+    item_prose?: Schema.item_prose;
+    items?: Schema.items;
+    language_names?: Schema.language_names;
+    languages?: Schema.languages;
+    location_area_encounter_rates?: Schema.location_area_encounter_rates;
+    location_area_prose?: Schema.location_area_prose;
+    location_areas?: Schema.location_areas;
+    location_game_indices?: Schema.location_game_indices;
+    location_names?: Schema.location_names;
+    locations?: Schema.locations;
+    machines?: Schema.machines;
+    move_battle_style_prose?: Schema.move_battle_style_prose;
+    move_battle_styles?: Schema.move_battle_styles;
+    move_changelog?: Schema.move_changelog;
+    move_damage_class_prose?: Schema.move_damage_class_prose;
+    move_damage_classes?: Schema.move_damage_classes;
+    move_effect_changelog?: Schema.move_effect_changelog;
+    move_effect_changelog_prose?: Schema.move_effect_changelog_prose;
+    move_effect_prose?: Schema.move_effect_prose;
+    move_flag_map?: Schema.move_flag_map;
+    move_flag_prose?: Schema.move_flag_prose;
+    move_flags?: Schema.move_flags;
+    move_flavor_summaries?: Schema.move_flavor_summaries;
+    move_flavor_text?: Schema.move_flavor_text;
+    move_meta?: Schema.move_meta;
+    move_meta_ailment_names?: Schema.move_meta_ailment_names;
+    move_meta_ailments?: Schema.move_meta_ailments;
+    move_meta_categories?: Schema.move_meta_categories;
+    move_meta_category_prose?: Schema.move_meta_category_prose;
+    move_meta_stat_changes?: Schema.move_meta_stat_changes;
+    move_names?: Schema.move_names;
+    move_target_prose?: Schema.move_target_prose;
+    move_targets?: Schema.move_targets;
+    moves?: Schema.moves;
+    nature_battle_style_preferences?: Schema.nature_battle_style_preferences;
+    nature_names?: Schema.nature_names;
+    nature_pokeathlon_stats?: Schema.nature_pokeathlon_stats;
+    natures?: Schema.natures;
+    pal_park?: Schema.pal_park;
+    pal_park_area_names?: Schema.pal_park_area_names;
+    pal_park_areas?: Schema.pal_park_areas;
+    pokeathlon_stat_names?: Schema.pokeathlon_stat_names;
+    pokeathlon_stats?: Schema.pokeathlon_stats;
+    pokedex_prose?: Schema.pokedex_prose;
+    pokedex_version_groups?: Schema.pokedex_version_groups;
+    pokedexes?: Schema.pokedexes;
     pokemon: Schema.pokemon;
     pokemon_abilities: Schema.pokemon_abilities;
-    pokemon_color_names: Schema.pokemon_color_names;
-    pokemon_colors: Schema.pokemon_colors;
-    pokemon_dex_numbers: Schema.pokemon_dex_numbers;
-    pokemon_egg_groups: Schema.pokemon_egg_groups;
-    pokemon_evolution: Schema.pokemon_evolution;
-    pokemon_form_generations: Schema.pokemon_form_generations;
-    pokemon_form_names: Schema.pokemon_form_names;
-    pokemon_form_pokeathlon_stats: Schema.pokemon_form_pokeathlon_stats;
-    pokemon_forms: Schema.pokemon_forms;
-    pokemon_game_indices: Schema.pokemon_game_indices;
-    pokemon_habitat_names: Schema.pokemon_habitat_names;
-    pokemon_habitats: Schema.pokemon_habitats;
-    pokemon_items: Schema.pokemon_items;
-    pokemon_move_method_prose: Schema.pokemon_move_method_prose;
-    pokemon_move_methods: Schema.pokemon_move_methods;
-    pokemon_shape_prose: Schema.pokemon_shape_prose;
-    pokemon_shapes: Schema.pokemon_shapes;
+    pokemon_color_names?: Schema.pokemon_color_names;
+    pokemon_colors?: Schema.pokemon_colors;
+    pokemon_dex_numbers?: Schema.pokemon_dex_numbers;
+    pokemon_egg_groups?: Schema.pokemon_egg_groups;
+    pokemon_evolution?: Schema.pokemon_evolution;
+    pokemon_form_generations?: Schema.pokemon_form_generations;
+    pokemon_form_names?: Schema.pokemon_form_names;
+    pokemon_form_pokeathlon_stats?: Schema.pokemon_form_pokeathlon_stats;
+    pokemon_forms?: Schema.pokemon_forms;
+    pokemon_game_indices?: Schema.pokemon_game_indices;
+    pokemon_habitat_names?: Schema.pokemon_habitat_names;
+    pokemon_habitats?: Schema.pokemon_habitats;
+    pokemon_items?: Schema.pokemon_items;
+    pokemon_moves?: Schema.pokemon_moves;
+    pokemon_move_method_prose?: Schema.pokemon_move_method_prose;
+    pokemon_move_methods?: Schema.pokemon_move_methods;
+    pokemon_shape_prose?: Schema.pokemon_shape_prose;
+    pokemon_shapes?: Schema.pokemon_shapes;
     pokemon_species: Schema.pokemon_species;
-    pokemon_species_flavor_summaries: Schema.pokemon_species_flavor_summaries;
-    pokemon_species_flavor_text: Schema.pokemon_species_flavor_text;
-    pokemon_species_names: Schema.pokemon_species_names;
+    pokemon_species_flavor_summaries?: Schema.pokemon_species_flavor_summaries;
+    pokemon_species_flavor_text?: Schema.pokemon_species_flavor_text;
+    pokemon_species_names?: Schema.pokemon_species_names;
     pokemon_stats: Schema.pokemon_stats;
     pokemon_types: Schema.pokemon_types;
-    region_names: Schema.region_names;
-    regions: Schema.regions;
-    stat_names: Schema.stat_names;
+    region_names?: Schema.region_names;
+    regions?: Schema.regions;
+    stat_names?: Schema.stat_names;
     stats: Schema.stats;
-    super_contest_combos: Schema.super_contest_combos;
-    super_contest_effect_prose: Schema.super_contest_effect_prose;
-    super_contest_effects: Schema.super_contest_effects;
-    type_efficacy: Schema.type_efficacy;
-    type_game_indices: Schema.type_game_indices;
-    type_names: Schema.type_names;
+    super_contest_combos?: Schema.super_contest_combos;
+    super_contest_effect_prose?: Schema.super_contest_effect_prose;
+    super_contest_effects?: Schema.super_contest_effects;
+    type_efficacy?: Schema.type_efficacy;
+    type_game_indices?: Schema.type_game_indices;
+    type_names?: Schema.type_names;
     types: Schema.types;
-    version_group_pokemon_move_methods: Schema.version_group_pokemon_move_methods;
-    version_group_regions: Schema.version_group_regions;
-    version_groups: Schema.version_groups;
-    version_names: Schema.version_names;
-    versions: Schema.versions;
+    version_group_pokemon_move_methods?: Schema.version_group_pokemon_move_methods;
+    version_group_regions?: Schema.version_group_regions;
+    version_groups?: Schema.version_groups;
+    version_names?: Schema.version_names;
+    versions?: Schema.versions;
   }
 }
 
@@ -693,9 +694,12 @@ export namespace Schema {
   }
 
   export interface pokemon_abilities {
-    ability_id: { [key: string]: number };
-    is_hidden: { [key: string]: number | string };
-    slot: { [key: string]: number };
+    [key: string]: Array<{
+      pokemon_id: number | string;
+      ability_id: number | string;
+      is_hidden: number | string;
+      slot: number | string;
+    }>;
   }
 
   export interface pokemon_color_names {
@@ -799,12 +803,14 @@ export namespace Schema {
   }
 
   export interface pokemon_moves {
-    level: { [key: string]: number };
-    move_id: { [key: string]: number };
-    order: { [key: string]: number };
-    pokemon_id: { [key: string]: number };
-    pokemon_move_method_id: { [key: string]: number };
-    version_group_id: { [key: string]: number };
+    [key: string]: Array<{
+      pokemon_id: number;
+      version_group_id: number;
+      move_id: number;
+      pokemon_move_method_id: number;
+      level: number;
+      order: number | null;
+    }>;
   }
 
   export interface pokemon_shape_prose {
@@ -857,14 +863,19 @@ export namespace Schema {
   }
 
   export interface pokemon_stats {
-    base_stat: { [key: string]: number };
-    effort: { [key: string]: number };
-    stat_id: { [key: string]: number };
+    [key: string]: Array<{
+      base_stat: number;
+      effort: number;
+      pokemon_id: number;
+      stat_id: number;
+    }>;
   }
 
   export interface pokemon_types {
-    slot: { [key: string]: number };
-    type_id: { [key: string]: number };
+    [key: string]: Array<{
+      slot: number;
+      type_id: number;
+    }>;
   }
 
   export interface region_names {

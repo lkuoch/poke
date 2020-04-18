@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
+import "./index.scss";
 import Loader, { LoaderOptions } from "Components/loader";
 import { RetrievePokemonImage, RetrievePokemonImageOptions } from "Services/pokemonService";
 
 import type { PokemonTypes } from "Core/types";
 
 function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
-  const { meta, view, data, initView } = props;
+  const { meta, view, data, initView, updateCurrentViewId } = props;
 
   useEffect(() => {
     if (!meta.hasLoaded) {
@@ -31,17 +32,20 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
     const id = pokemons[singleColumnIndex];
     const pokemonName = data.pokemon.identifier[id];
     const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+    const cellClassNames = `pk-cell-wrapper
+      ${id === view.currentId ? "pk-cell-selected" : ""}
+    `;
 
     return (
-      <div style={style}>
+      <div style={style} className={cellClassNames} onClick={() => updateCurrentViewId(id)}>
         <div key={`${id}`} className="ui fluid card">
           <img
-            className="ui image"
+            className="ui image small"
             src={RetrievePokemonImage(id, RetrievePokemonImageOptions.Official)}
             alt={pokemonName}
           />
           <div className="content">
-            <a className="header">{formattedPokemonName}</a>
+            <div className="header">{formattedPokemonName}</div>
           </div>
         </div>
       </div>
@@ -59,8 +63,8 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
     >
       <AutoSizer defaultWidth={1920} defaultHeight={1080}>
         {({ width, height }) => {
-          const cardWidth = 300;
-          const cardHeight = 355;
+          const cardWidth = 150;
+          const cardHeight = 195;
           const columnCount = Math.floor(width / cardWidth);
           const rowCount = Math.ceil(view.ids.length / columnCount);
 

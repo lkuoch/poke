@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 // Current component
 import Sidepanel from "./Components";
 
-const mapStateToProps = (state: any): any => {
+const mapStateToProps = (_state: any): any => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): any => {
+const mapDispatchToProps = (_dispatch: Dispatch): any => {
   return {};
 };
 

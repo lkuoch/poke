@@ -8,7 +8,7 @@ const name = "POKEMON";
 const initialState: PokemonTypes.State.IState = {
   view: {
     ids: [],
-    currentId: null
+    currentId: "1"
   },
 
   meta: {
@@ -31,6 +31,10 @@ const { actions, reducer } = createSlice<
       state.view.ids = payload;
       state.view.currentId = payload[0];
       state.meta.hasLoaded = true;
+    },
+
+    updateCurrentViewId: (state, { payload }) => {
+      state.view.currentId = payload;
     }
   }
 });
@@ -38,7 +42,9 @@ const { actions, reducer } = createSlice<
 // Selectors
 const selectors = {
   selectMeta: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].meta,
-  selectView: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view
+  selectView: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view,
+  selectViewCurrentId: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view.currentId,
+  selectPokemon: (state: AppTypes.Root.IRootState) => state.DATABASE.pokemon
 };
 
 export { initialState, actions, reducer, selectors, name };

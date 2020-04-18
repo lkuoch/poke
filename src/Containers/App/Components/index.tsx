@@ -4,6 +4,7 @@ import "./index.scss";
 import Navbar from "Containers/Navbar";
 import Sidepanel from "Containers/Sidepanel";
 import Pokemon from "Containers/Pokemon";
+import PokemonPanel from "Containers/PokemonPanel";
 
 function App() {
   return (
@@ -12,12 +13,16 @@ function App() {
         <Navbar />
       </div>
 
-      <div className="three wide column">
+      <div className="two wide column">
         <Sidepanel />
       </div>
 
-      <div className="thirteen wide stretched column">
+      <div className="eight wide stretched column">
         <Pokemon />
+      </div>
+
+      <div className="six wide column">
+        <PokemonPanel />
       </div>
     </div>
   );

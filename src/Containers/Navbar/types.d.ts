@@ -1,9 +1,5 @@
 import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 
-export namespace Models {}
-
-export namespace Services {}
-
 export namespace State {
   export interface IState {}
 
