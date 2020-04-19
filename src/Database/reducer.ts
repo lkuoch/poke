@@ -3,7 +3,7 @@ import state from "./state";
 import type { DatabaseTypes } from "Core/types";
 
 // Name of slice
-const name = "Database";
+const name = "DATABASE";
 
 // Slice initial state
 const initialState: DatabaseTypes.State.IState = state;

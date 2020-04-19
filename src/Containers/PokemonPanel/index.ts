@@ -1,16 +1,14 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-
 import { selectors } from "./reducer";
 
 import PokemonPanel from "./Components";
 import type { AppTypes, PokemonPanelTypes } from "Core/types";
 
 const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonPanelTypes.State.IMappedState => {
-  const pokemonDetails = selectors.selectPokemonDetails(state);
-//   console.log('pd', pokemonDetails);
+  const currentPokemonDetails = selectors.selectCurrentView(state);
   return {
-    pokemonDetails
+    currentPokemonDetails
   };
 };
 

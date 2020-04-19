@@ -1,16 +1,26 @@
-import type { AppConfigTypes, DatabaseTypes, NavbarTypes, PokemonTypes } from "Core/types";
+import { name as AppName } from "Containers/App/reducer";
+import { name as DatabaseName } from "Database/reducer";
+import { name as PokemonName } from "Containers/Pokemon/reducer";
+import { name as PokemonPanelName } from "Containers/PokemonPanel/reducer";
+import { name as NavbarName } from "Containers/Navbar/reducer";
+import type {
+  AppConfigTypes,
+  DatabaseTypes,
+  NavbarTypes,
+  PokemonTypes,
+  PokemonPanelTypes
+} from "Core/types";
 import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 
 export namespace Root {
   export interface IRootState {
-    CONTEXT: IRootAppState;
-    DATABASE: DatabaseTypes.State.IState;
-  }
-
-  export interface IRootAppState {
-    CONTEXT: State.IState;
-    NAVBAR: NavbarTypes.State.IState;
-    POKEMON: PokemonTypes.State.IState;
+    CONTEXT: {
+      [AppName]: State.IState;
+      [NavbarName]: NavbarTypes.State.IState;
+      [PokemonName]: PokemonTypes.State.IState;
+      [PokemonPanelName]: PokemonPanelTypes.State.IState;
+    };
+    [DatabaseName]: DatabaseTypes.State.IState;
   }
 }
 
