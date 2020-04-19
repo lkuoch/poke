@@ -6,3 +6,29 @@
     align-content: center;
     justify-content: center;
 }
+
+.pk-pokemon-panel {
+    width: 95%;
+
+    .ui.block.header {
+        margin: 0 0 0.5rem 0 !important;
+    }
+
+    .swiper-container {
+        width: 150px;
+        height: 165px;
+        margin: 0 auto;
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .pokemon-image {
+        width: 150px;
+        height: 150px;
+        pointer-events: none;
+    }
+}

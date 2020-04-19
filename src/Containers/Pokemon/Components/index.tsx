@@ -54,7 +54,6 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
 
   return (
     <div
-      className="ui segment"
       style={{
         minHeight: "100vh",
         position: "sticky",
