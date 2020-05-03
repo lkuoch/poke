@@ -10,7 +10,7 @@
     "start:web": "set HTTPS=true&&react-scripts start",
     "start:electron": "concurrently \"react-scripts start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
     "build:web": "react-scripts build",
-    "build:electron": "yarn build && tsc -p electron && electron-builder",
+    "build:electron": "react-scripts build && tsc -p electron && electron-builder",
     "test": "react-scripts test",
     "postinstall": "electron-builder install-app-deps",
     "eject": "react-scripts eject"

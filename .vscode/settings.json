@@ -1,4 +1,8 @@
 {
   "git.ignoreLimitWarning": true,
-  "python.pythonPath": "C:\\Python39\\python.exe"
+  "files.exclude": {
+    "**/package-lock.json": true,
+    "src/react-app-env.d.ts": true,
+    "build/": true
+  },
 }

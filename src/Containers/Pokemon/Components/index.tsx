@@ -52,14 +52,8 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "90vh",
-        position: "sticky",
-        top: "0px"
-      }}
-    >
-      <AutoSizer defaultWidth={1920} defaultHeight={1080}>
+    <div id="pk-pokemon">
+      <AutoSizer>
         {({ width, height }) => {
           const cardWidth = 150;
           const cardHeight = 195;

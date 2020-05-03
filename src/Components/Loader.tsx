@@ -9,7 +9,7 @@ export default function Loader({
 }: ComponentTypes.Loader.IProps & React.HTMLAttributes<HTMLDivElement>) {
   const loaderWrapperClassName = `pk-loader ${className ? className : ""}`;
   return (
-    <div className={loaderWrapperClassName}>
+    <div id="pk-loader" className={loaderWrapperClassName}>
       <div className="ui active inverted dimmer">
         <div className="ui text loader pk-text">{loadingContent}</div>
       </div>

@@ -1,3 +1,14 @@
 #pk-app {
-    padding: 1rem !important;
-}   
+    margin: 1rem !important;
+    height: 92vh;
+
+    .pk-navbar-wrapper {
+        padding: 0rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .pk-content1-wrapper,
+    .pk-content2-wrapper {
+        height: 100%;
+        padding: 0.75rem;
+    }
+}
