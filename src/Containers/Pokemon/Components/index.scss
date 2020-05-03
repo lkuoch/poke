@@ -1,7 +1,15 @@
 .pk-cell-wrapper {
     padding: 5px;
+
+    .card .content {
+        padding: 0.25em 0.25em;
+
+        .header {
+            text-align: center;
+        }
+    }
 }
 
-.pk-cell-selected > .card {
+.pk-cell-selected>.card {
     border: 0.1rem solid #d01919 !important;
 }

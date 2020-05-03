@@ -3,7 +3,7 @@ import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import "./index.scss";
-import Loader from "Components/loader";
+import Loader from "Components/Loader";
 import { BasePath, PokemonImageOptions } from "Containers/PokemonPanel/entities";
 
 import type { PokemonTypes } from "Core/types";
@@ -33,7 +33,7 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
     const id = pokemons[singleColumnIndex];
     const pokemonName = data.pokemon.identifier[id];
     const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
-    const pokemonImageLink = `${BasePath}/${PokemonImageOptions.Sugimori}/${id}.png`;
+    const pokemonImageLink = `${BasePath}/${PokemonImageOptions.Official}/${id}.png`;
 
     const cellClassNames = `pk-cell-wrapper
       ${id === view.currentId ? "pk-cell-selected" : ""}
@@ -54,7 +54,7 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "90vh",
         position: "sticky",
         top: "0px"
       }}

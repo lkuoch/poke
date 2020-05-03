@@ -9,8 +9,3 @@ export function ObjectMapper<T>(obj: Object, fn: (x: string, _1, _2) => any): T 
 export function RetrieveEnumKeyValues(enumObj: Object): Array<string> {
   return Object.keys(enumObj).filter((x) => typeof x === "string");
 }
-
-export async function ImageIsAvailable(path: string): Promise<boolean> {
-  const image = await fetch(path);
-  return image.status === 200;
-}

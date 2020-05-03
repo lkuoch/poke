@@ -13,15 +13,11 @@ function App() {
         <Navbar />
       </div>
 
-      <div className="two wide column">
-        <Sidepanel />
-      </div>
-
       <div className="eight wide stretched column">
         <Pokemon />
       </div>
 
-      <div className="six wide column">
+      <div className="eight wide column">
         <PokemonPanel />
       </div>
     </div>

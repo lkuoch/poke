@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Swiper from "swiper";
 
 import "./index.scss";
-import Loader from "Components/loader";
+import Loader from "Components/Loader";
 import type { PokemonPanelTypes } from "Core/types";
 
 function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
@@ -10,9 +10,22 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
   useEffect(() => {
     if (props.currentPokemonDetails)
       new Swiper(".swiper-container", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        preloadImages: true,
+
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true
+        },
+
         pagination: {
-          el: ".swiper-pagination",
-          clickable: true
+          el: ".swiper-pagination"
         }
       });
   }, [props.currentPokemonDetails]);
@@ -21,120 +34,25 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
     return <Loader loadingContent="Loading pokemon details..." />;
   }
 
-  // const HideSliderOnError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-  //   const imgContainer = event.currentTarget.parentElement;
-  //   imgContainer?.parentElement?.removeChild(imgContainer);
-  // };
-
-  /* Carousel component
-  const PokemonCarousal = () => {
+  const GalleryView = () => {
     return (
       <div className="swiper-container">
         <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.Official
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="official"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.Default
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="default"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.DefaultFemale
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="female"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(props.currentPokemonId, RetrievePokemonImageOptions.Model)}
-              onError={(e) => HideSliderOnError(e)}
-              alt="model"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(props.currentPokemonId, RetrievePokemonImageOptions.Shiny)}
-              onError={(e) => HideSliderOnError(e)}
-              alt="default"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.ShinyFemale
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="shiny-female"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(props.currentPokemonId, RetrievePokemonImageOptions.Back)}
-              onError={(e) => HideSliderOnError(e)}
-              alt="back"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.BackShiny
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="back"
-              className="pokemon-image"
-            />
-          </div>
-
-          <div className="swiper-slide">
-            <img
-              src={RetrievePokemonImage(
-                props.currentPokemonId,
-                RetrievePokemonImageOptions.BackShinyFemale
-              )}
-              onError={(e) => HideSliderOnError(e)}
-              alt="back"
-              className="pokemon-image"
-            />
-          </div>
+          {props.currentPokemonDetails.imageLinks!.map((x, i) => (
+            <div key={i} className="swiper-slide">
+              <img
+                src={x}
+                alt="pokemon-image"
+                onError={(x: any) => x.target.parentNode.parentNode && x.target.parentNode.parentNode.removeChild(x.target.parentNode)}
+              />
+            </div>
+          ))}
         </div>
-        <div className="swiper-pagination" />
+        <div className="swiper-pagination"></div>
       </div>
     );
   };
-  */
+
   const PokemonTitle = () => {
     const pokemonName = String(props.currentPokemonDetails.pokemon.identifier);
     const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
@@ -145,6 +63,7 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
   return (
     <div className="pk-pokemon-panel">
       <PokemonTitle />
+      {GalleryView()}
     </div>
   );
 }
