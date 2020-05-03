@@ -6,11 +6,11 @@ export function ObjectMapper<T>(obj: Object, fn: (x: string, _1, _2) => any): T 
   return Object.fromEntries(Object.entries(obj).map(([k, v], i) => [k, fn(v, k, i)])) as T;
 }
 
-export function ModuleIsAvailable(path: string): boolean {
-  try {
-    require.resolve(path);
-    return true;
-  } catch (e) {
-    return false;
-  }
+export function RetrieveEnumKeyValues(enumObj: Object): Array<string> {
+  return Object.keys(enumObj).filter((x) => typeof x === "string");
+}
+
+export async function ImageIsAvailable(path: string): Promise<boolean> {
+  const image = await fetch(path);
+  return image.status === 200;
 }

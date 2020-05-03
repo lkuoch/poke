@@ -1,16 +1,14 @@
-import { RetrievePokemonMove } from "Services/pokemonPanelService";
-import { ObjectMapper } from "Services/dataService";
+import { ObjectMapper, ImageIsAvailable } from "Services/dataService";
+import { BasePath, PokemonImageOptions } from "./entities";
 import type { AppTypes, DatabaseTypes, PokemonPanelTypes } from "Core/types";
 
 export function RetrievePokemonDetails(
   state: AppTypes.Root.IRootState,
-  currentPokemonId: string
+  currentPokemonId: string,
+  pokemonImageList: Array<string>
 ): PokemonPanelTypes.State.IState["views"]["value"] {
   // Pokemon
-  const pokemon = ObjectMapper<DatabaseTypes.Schema.pokemon>(
-    state.DATABASE.pokemon,
-    (x) => x[currentPokemonId]
-  );
+  const pokemon = ObjectMapper<DatabaseTypes.Schema.pokemon>(state.DATABASE.pokemon, (x) => x[currentPokemonId]);
   const pokemonGameIndices = state.DATABASE.pokemon_game_indices[currentPokemonId];
   const pokemonVersions = state.DATABASE.versions.identifier;
 
@@ -52,6 +50,9 @@ export function RetrievePokemonDetails(
     pokemonMoves.map((y) => x[y.move_id])
   );
 
+  // Image links
+  const imageLinks = pokemonImageList.map((p) => `${BasePath}/${PokemonImageOptions[p]}/${currentPokemonId}.png`);
+
   return {
     pokemon,
     pokemonGameIndices,
@@ -72,6 +73,12 @@ export function RetrievePokemonDetails(
     statList,
 
     pokemonTypes,
-    typeList
+    typeList,
+
+    imageLinks
   };
+}
+
+export function RetrievePokemonMove(pokemon_id: string): DatabaseTypes.Schema.pokemon_moves {
+  return require(`Database/Data/pokemon_moves/${pokemon_id}.json`);
 }

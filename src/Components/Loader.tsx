@@ -1,17 +1,10 @@
 import React from "react";
-import { RetrieveRandomPokemonImage } from "Services/pokemonService";
 
 import "./index.scss";
 import type { ComponentTypes } from "Core/types";
 
-export enum LoaderOptions {
-  ShowRandomPokemon = "ShowRandomPokemon",
-  None = "None"
-}
-
 export default function Loader({
   loadingContent,
-  loaderOptions = LoaderOptions.None,
   className
 }: ComponentTypes.Loader.IProps & React.HTMLAttributes<HTMLDivElement>) {
   const loaderWrapperClassName = `pk-loader ${className ? className : ""}`;
@@ -21,13 +14,7 @@ export default function Loader({
         <div className="ui text loader pk-text">{loadingContent}</div>
       </div>
 
-      {loaderOptions === LoaderOptions.ShowRandomPokemon && (
-        <img
-          className="ui wireframe image"
-          alt="random-pokemon-loading"
-          src={RetrieveRandomPokemonImage()}
-        />
-      )}
+      <img className="ui wireframe image" alt="loading-content" />
     </div>
   );
 }

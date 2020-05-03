@@ -13,10 +13,7 @@ const initialState: PokemonPanelTypes.State.IState = {
 };
 
 // Slice
-const { actions, reducer } = createSlice<
-  PokemonPanelTypes.State.IState,
-  PokemonPanelTypes.Redux.ISliceReducers
->({
+const { actions, reducer } = createSlice<PokemonPanelTypes.State.IState, PokemonPanelTypes.Redux.ISliceReducers>({
   name,
   initialState,
   reducers: {
@@ -29,10 +26,7 @@ const { actions, reducer } = createSlice<
 const selectors = {
   selectViews: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].views,
   selectCurrentView: (state: AppTypes.Root.IRootState) =>
-    createSelector(
-      [PokemonSelectors.selectViewCurrentId, selectors.selectViews],
-      (id, views) => views[id]
-    )(state)
+    createSelector([PokemonSelectors.selectViewCurrentId, selectors.selectViews], (id, views) => views[id])(state)
 };
 
 export { initialState, actions, reducer, selectors, name };

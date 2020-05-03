@@ -27,6 +27,7 @@ export namespace Root {
 export namespace State {
   export interface IState {
     pokeAppConfig: AppConfigTypes.Models.IConfig | null;
+    pokemonImageOptions: Array<string>;
   }
 
   export interface IMappedState extends Partial<IState> {}

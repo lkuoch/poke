@@ -25,6 +25,8 @@ export namespace State {
 
         pokemonTypes: DatabaseTypes.Schema.pokemon_types["pokemon_types"];
         typeList: DatabaseTypes.Schema.types["identifier"];
+
+        imageLinks: Array<string>;
       };
     };
 
@@ -32,6 +34,7 @@ export namespace State {
   }
 
   export interface IMappedState extends Partial<IState> {
+    pokemonImageOptions: Array<string>;
     currentPokemonDetails: State.IState["views"]["value"];
     currentPokemonId: string;
   }

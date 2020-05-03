@@ -3,8 +3,8 @@ import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import "./index.scss";
-import Loader, { LoaderOptions } from "Components/loader";
-import { RetrievePokemonImage, RetrievePokemonImageOptions } from "Services/pokemonService";
+import Loader from "Components/loader";
+import { BasePath, PokemonImageOptions } from "Containers/PokemonPanel/entities";
 
 import type { PokemonTypes } from "Core/types";
 
@@ -20,18 +20,21 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
 
   // Show loader when loading pokemon
   if (!meta.hasLoaded) {
-    return (
-      <Loader loadingContent="Loading pokemon..." loaderOptions={LoaderOptions.ShowRandomPokemon} />
-    );
+    return <Loader loadingContent="Loading pokemon..." />;
   }
 
   // Grid cell of pokemon data
   const Cell = ({ columnIndex, rowIndex, style, data: propData }) => {
     const { pokemons, columnCount } = propData;
     const singleColumnIndex = columnIndex + rowIndex * columnCount;
+
+    if (singleColumnIndex >= pokemons.length) return null;
+
     const id = pokemons[singleColumnIndex];
     const pokemonName = data.pokemon.identifier[id];
     const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+    const pokemonImageLink = `${BasePath}/${PokemonImageOptions.Sugimori}/${id}.png`;
+
     const cellClassNames = `pk-cell-wrapper
       ${id === view.currentId ? "pk-cell-selected" : ""}
     `;
@@ -39,11 +42,7 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
     return (
       <div style={style} className={cellClassNames} onClick={() => updateCurrentViewId(id)}>
         <div key={`${id}`} className="ui fluid card">
-          <img
-            className="ui image small"
-            src={RetrievePokemonImage(id, RetrievePokemonImageOptions.Official)}
-            alt={pokemonName}
-          />
+          <img className="ui image small" alt={pokemonName} src={pokemonImageLink} />
           <div className="content">
             <div className="header">{formattedPokemonName}</div>
           </div>

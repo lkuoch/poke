@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Swiper from "swiper";
 
 import "./index.scss";
-import { RetrievePokemonImage, RetrievePokemonImageOptions } from "Services/pokemonService";
 import Loader from "Components/loader";
 import type { PokemonPanelTypes } from "Core/types";
 
@@ -22,12 +21,12 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
     return <Loader loadingContent="Loading pokemon details..." />;
   }
 
-  const HideSliderOnError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const imgContainer = event.currentTarget.parentElement;
-    imgContainer?.parentElement?.removeChild(imgContainer);
-  };
+  // const HideSliderOnError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  //   const imgContainer = event.currentTarget.parentElement;
+  //   imgContainer?.parentElement?.removeChild(imgContainer);
+  // };
 
-  // Carousel component
+  /* Carousel component
   const PokemonCarousal = () => {
     return (
       <div className="swiper-container">
@@ -135,7 +134,7 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
       </div>
     );
   };
-
+  */
   const PokemonTitle = () => {
     const pokemonName = String(props.currentPokemonDetails.pokemon.identifier);
     const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
@@ -146,8 +145,6 @@ function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
   return (
     <div className="pk-pokemon-panel">
       <PokemonTitle />
-
-      {PokemonCarousal()}
     </div>
   );
 }
