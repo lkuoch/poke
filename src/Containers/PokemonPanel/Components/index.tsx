@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./index.scss";
 import Gallery from "./gallery";
 import Loader from "Components/Loader";
+import { capitalizeString } from "Services/formattingService";
 import type { PokemonPanelTypes } from "Core/types";
 
 function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
+  useEffect(() => {
+    props.onInit();
+  }, [props]);
+
   if (!props || !props.currentPokemonDetails) {
     return <Loader loadingContent="Loading pokemon details..." />;
   }
 
   const PokemonTitle = () => {
-    const pokemonName = String(props.currentPokemonDetails.pokemon.identifier);
-    const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+    const pokemonName = capitalizeString(props.currentPokemonDetails.pokemon.identifier);
 
-    return <h3 className="ui block header">{formattedPokemonName}</h3>;
+    return <h3 className="ui block header">{pokemonName}</h3>;
   };
 
   return (

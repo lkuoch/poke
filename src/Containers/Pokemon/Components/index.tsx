@@ -5,6 +5,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import "./index.scss";
 import Loader from "Components/Loader";
 import { BasePath, PokemonImageOptions } from "Containers/PokemonPanel/entities";
+import { capitalizeString } from "Services/formattingService";
 
 import type { PokemonTypes } from "Core/types";
 
@@ -32,7 +33,6 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
 
     const id = pokemons[singleColumnIndex];
     const pokemonName = data.pokemon.identifier[id];
-    const formattedPokemonName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
     const pokemonImageLink = `${BasePath}/${PokemonImageOptions.Official}/${id}.png`;
 
     const cellClassNames = `pk-cell-wrapper
@@ -44,7 +44,7 @@ function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
         <div key={`${id}`} className="ui fluid card">
           <img className="ui image small" alt={pokemonName} src={pokemonImageLink} />
           <div className="content">
-            <div className="header">{formattedPokemonName}</div>
+            <div className="header">{capitalizeString(pokemonName)}</div>
           </div>
         </div>
       </div>

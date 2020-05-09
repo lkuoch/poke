@@ -8,7 +8,13 @@ const name = "POKEMON_PANEL";
 
 // Slice initial state
 const initialState: PokemonPanelTypes.State.IState = {
+  // Each pokemon specific information
   views: {},
+
+  // Information shared across all pokemon
+  shared: {},
+
+  // Information about pokemon panel
   meta: {}
 };
 
@@ -17,13 +23,20 @@ const { actions, reducer } = createSlice<PokemonPanelTypes.State.IState, Pokemon
   name,
   initialState,
   reducers: {
-    updateCurrentPokemonDetail: (state, { payload }) => {
+    onInit: (state) => state,
+
+    updateShared: (state, { payload }) => {
+      state.shared = payload;
+    },
+
+    updateViews: (state, { payload }) => {
       state.views[payload.id] = payload.value;
     }
   }
 });
 
 const selectors = {
+  selectShared: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].shared,
   selectViews: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].views,
   selectCurrentView: (state: AppTypes.Root.IRootState) =>
     createSelector([PokemonSelectors.selectViewCurrentId, selectors.selectViews], (id, views) => views[id])(state)

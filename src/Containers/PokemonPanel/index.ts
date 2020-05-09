@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import { selectors } from "./reducer";
+import { selectors, actions } from "./reducer";
 import { selectors as AppSelectors } from "Containers/App/reducer";
 import { selectors as PokemonSelectors } from "Containers/Pokemon/reducer";
 
@@ -19,8 +19,10 @@ const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonPanelTypes.Sta
   };
 };
 
-const mapDispatchToProps = (_dispatch: Dispatch): PokemonPanelTypes.Redux.IMappedDispatch => {
-  return {};
+const mapDispatchToProps = (dispatch: Dispatch): PokemonPanelTypes.Redux.IMappedDispatch => {
+  return {
+    onInit: () => dispatch(actions.onInit())
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonPanel);

@@ -15,3 +15,6 @@ export type { default as PokemonPanelTypes } from "Containers/PokemonPanel/types
 
 //* Components
 export type { default as ComponentTypes } from "Components/types";
+
+//* Services
+export type { default as ServiceTypes } from "Services/types";

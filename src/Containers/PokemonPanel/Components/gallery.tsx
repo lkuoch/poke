@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import Swiper from "swiper";
 
-function Gallery({ imageLinks }: { imageLinks: Array<string> }) {
-  // Instantiate Gallery
+import type { PokemonPanelTypes } from "Core/types";
+
+function Gallery({ imageLinks }: PokemonPanelTypes.Props.Gallery) {
   useEffect(() => {
     if (imageLinks)
       new Swiper(".swiper-container", {
