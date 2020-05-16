@@ -1,20 +1,20 @@
 //* APP
-export type { default as AppTypes } from "Containers/App/types";
-export type { default as AppConfigTypes } from "Config/types";
+export type { default as IApp } from "Containers/App/types";
+export type { default as IAppConfig } from "Config/types";
 
 //* Database
-export type { default as DatabaseTypes } from "Database/types";
+export type { default as IDatabase } from "Database/types";
 
 //* Middlewares
-export type { default as MiddlewareTypes } from "Middlewares/types";
+export type { default as IMiddleware } from "Middlewares/types";
 
 //* Containers
-export type { default as NavbarTypes } from "Containers/Navbar/types";
-export type { default as PokemonTypes } from "Containers/Pokemon/types";
-export type { default as PokemonPanelTypes } from "Containers/PokemonPanel/types";
+export type { default as INavbar } from "Containers/Navbar/types";
+export type { default as IPokemon } from "Containers/Pokemon/types";
+export type { default as IPokemonPanel } from "Containers/PokemonPanel/types";
 
 //* Components
-export type { default as ComponentTypes } from "Components/types";
+export type { default as IComponent } from "Components/types";
 
 //* Services
-export type { default as ServiceTypes } from "Services/types";
+export type { default as IService } from "Services/types";

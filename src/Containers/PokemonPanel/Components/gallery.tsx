@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Swiper from "swiper";
 
-import type { PokemonPanelTypes } from "Core/types";
+import type { IPokemonPanel } from "Core/types";
 
-function Gallery({ imageLinks }: PokemonPanelTypes.Props.Gallery) {
+function Gallery({ imageLinks }: IPokemonPanel.Props.Gallery) {
   useEffect(() => {
     if (imageLinks)
       new Swiper(".swiper-container", {

@@ -5,9 +5,9 @@ import { selectors as AppSelectors } from "Containers/App/reducer";
 import { selectors as PokemonSelectors } from "Containers/Pokemon/reducer";
 
 import PokemonPanel from "./Components";
-import type { AppTypes, PokemonPanelTypes } from "Core/types";
+import type { IApp, IPokemonPanel } from "Core/types";
 
-const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonPanelTypes.State.IMappedState => {
+const mapStateToProps = (state: IApp.Root.IRootState): IPokemonPanel.State.IMappedState => {
   const pokemonImageOptions = AppSelectors.selectPokemonImageOptions(state);
   const currentPokemonDetails = selectors.selectCurrentView(state);
   const currentPokemonId = PokemonSelectors.selectViewCurrentId(state);
@@ -19,7 +19,7 @@ const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonPanelTypes.Sta
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): PokemonPanelTypes.Redux.IMappedDispatch => {
+const mapDispatchToProps = (dispatch: Dispatch): IPokemonPanel.Redux.IMappedDispatch => {
   return {
     onInit: () => dispatch(actions.onInit())
   };

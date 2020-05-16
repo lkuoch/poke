@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./index.scss";
-import type { ComponentTypes } from "Core/types";
+import type { IComponent } from "Core/types";
 
 export default function Loader({
   loadingContent,
   className
-}: ComponentTypes.Loader.IProps & React.HTMLAttributes<HTMLDivElement>) {
+}: IComponent.Loader.IProps & React.HTMLAttributes<HTMLDivElement>) {
   const loaderWrapperClassName = `pk-loader ${className ? className : ""}`;
   return (
     <div id="pk-loader" className={loaderWrapperClassName}>

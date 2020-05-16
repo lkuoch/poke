@@ -1,36 +1,36 @@
 import type { SliceCaseReducers, CaseReducer, PayloadAction, AnyAction } from "@reduxjs/toolkit";
-import type { AppTypes, DatabaseTypes, ServiceTypes } from "Core/types";
+import type { IApp, IDatabase, IService } from "Core/types";
 
 export namespace State {
   export interface IState {
     views: {
       [key?: string]: {
-        pokemon: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.pokemon>;
-        pokemonGameIndices: DatabaseTypes.Schema.pokemon_game_indices["pokemonGameIndices"];
+        pokemon: IService.Util.SimpleFlatten<IDatabase.Schema.pokemon>;
+        pokemonGameIndices: IDatabase.Schema.pokemon_game_indices["pokemonGameIndices"];
 
-        pokemonSpecies: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.pokemon_species>;
-        pokemonColor: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.pokemon_colors>;
-        pokemonShape: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.pokemon_shapes>;
-        pokemonHabitat: DatabaseTypes.Schema.pokemon_habitats["identifier"]["key"];
+        pokemonSpecies: IService.Util.SimpleFlatten<IDatabase.Schema.pokemon_species>;
+        pokemonColor: IService.Util.SimpleFlatten<IDatabase.Schema.pokemon_colors>;
+        pokemonShape: IService.Util.SimpleFlatten<IDatabase.Schema.pokemon_shapes>;
+        pokemonHabitat: IDatabase.Schema.pokemon_habitats["identifier"]["key"];
 
-        pokemonAbilities: DatabaseTypes.Schema.pokemon_abilities["pokemon_abilities"];
-        abilities: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.abilities>;
+        pokemonAbilities: IDatabase.Schema.pokemon_abilities["pokemon_abilities"];
+        abilities: IService.Util.SimpleFlatten<IDatabase.Schema.abilities>;
 
-        pokemonMoves: DatabaseTypes.Schema.pokemon_moves["pokemon_moves"];
-        moveList: ServiceTypes.Util.SimpleFlattenWithArray<DatabaseTypes.Schema.moves>;
+        pokemonMoves: IDatabase.Schema.pokemon_moves["pokemon_moves"];
+        moveList: IService.Util.SimpleFlattenWithArray<IDatabase.Schema.moves>;
 
-        pokemonStats: DatabaseTypes.Schema.pokemon_stats["pokemon_stats"];
+        pokemonStats: IDatabase.Schema.pokemon_stats["pokemon_stats"];
 
-        pokemonTypes: DatabaseTypes.Schema.pokemon_types["pokemon_types"];
+        IPokemon: IDatabase.Schema.pokemon_types["pokemon_types"];
 
         imageLinks: Array<string>;
       };
     };
 
     shared: {
-      pokemonVersions?: ServiceTypes.Util.SimpleFlatten<DatabaseTypes.Schema.versions["identifier"]>;
-      statList?: DatabaseTypes.Schema.stats["identifier"];
-      typeList?: DatabaseTypes.Schema.types["identifier"];
+      pokemonVersions?: IService.Util.SimpleFlatten<IDatabase.Schema.versions["identifier"]>;
+      statList?: IDatabase.Schema.stats["identifier"];
+      typeList?: IDatabase.Schema.types["identifier"];
     };
 
     meta: {};
@@ -75,25 +75,25 @@ export namespace Redux {
 
 export namespace Selectors {
   export interface IPokemonDetails {
-    pokemon: DatabaseTypes.Schema.pokemon;
-    pokemonGameIndices: DatabaseTypes.Schema.pokemon_game_indices["pokemonGameIndices"];
-    pokemonVersions: DatabaseTypes.Schema.versions["identifier"];
+    pokemon: IDatabase.Schema.pokemon;
+    pokemonGameIndices: IDatabase.Schema.pokemon_game_indices["pokemonGameIndices"];
+    pokemonVersions: IDatabase.Schema.versions["identifier"];
 
-    pokemonSpecies: DatabaseTypes.Schema.pokemon_species;
-    pokemonColor: DatabaseTypes.Schema.pokemon_colors;
-    pokemonShape: DatabaseTypes.Schema.pokemon_shapes;
-    pokemonHabitat: DatabaseTypes.Schema.pokemon_habitats["identifier"];
+    pokemonSpecies: IDatabase.Schema.pokemon_species;
+    pokemonColor: IDatabase.Schema.pokemon_colors;
+    pokemonShape: IDatabase.Schema.pokemon_shapes;
+    pokemonHabitat: IDatabase.Schema.pokemon_habitats["identifier"];
 
-    pokemonAbilities: DatabaseTypes.Schema.pokemon_abilities["pokemon_abilities"];
-    abilities: DatabaseTypes.Schema.abilities;
+    pokemonAbilities: IDatabase.Schema.pokemon_abilities["pokemon_abilities"];
+    abilities: IDatabase.Schema.abilities;
 
-    pokemonMoves: DatabaseTypes.Schema.pokemon_moves["pokemon_moves"];
-    moveList: DatabaseTypes.Schema.moves;
+    pokemonMoves: IDatabase.Schema.pokemon_moves["pokemon_moves"];
+    moveList: IDatabase.Schema.moves;
 
-    pokemonStats: DatabaseTypes.Schema.pokemon_stats["pokemon_stats"];
-    statList: DatabaseTypes.Schema.stats["identifier"];
+    pokemonStats: IDatabase.Schema.pokemon_stats["pokemon_stats"];
+    statList: IDatabase.Schema.stats["identifier"];
 
-    pokemonTypes: DatabaseTypes.Schema.pokemon_types["pokemon_types"];
-    typeList: DatabaseTypes.Schema.types["identifier"];
+    IPokemon: IDatabase.Schema.pokemon_types["pokemon_types"];
+    typeList: IDatabase.Schema.types["identifier"];
   }
 }

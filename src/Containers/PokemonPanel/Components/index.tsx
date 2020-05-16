@@ -4,9 +4,9 @@ import "./index.scss";
 import Gallery from "./gallery";
 import Loader from "Components/Loader";
 import { capitalizeString } from "Services/formattingService";
-import type { PokemonPanelTypes } from "Core/types";
+import type { IPokemonPanel } from "Core/types";
 
-function PokemonPanel(props: PokemonPanelTypes.Redux.IMappedProps) {
+function PokemonPanel(props: IPokemonPanel.Redux.IMappedProps) {
   useEffect(() => {
     props.onInit();
   }, [props]);

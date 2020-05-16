@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { AppTypes, PokemonTypes } from "Core/types";
+import type { IApp, IPokemon } from "Core/types";
 
 // Name of slice
 const name = "POKEMON";
 
 // Slice initial state
-const initialState: PokemonTypes.State.IState = {
+const initialState: IPokemon.State.IState = {
   view: {
     ids: [],
     currentId: "1"
@@ -18,8 +18,8 @@ const initialState: PokemonTypes.State.IState = {
 
 // Slice
 const { actions, reducer } = createSlice<
-  PokemonTypes.State.IState,
-  PokemonTypes.Redux.ISliceReducers
+  IPokemon.State.IState,
+  IPokemon.Redux.ISliceReducers
 >({
   name,
   initialState,
@@ -41,10 +41,10 @@ const { actions, reducer } = createSlice<
 
 // Selectors
 const selectors = {
-  selectMeta: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].meta,
-  selectView: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view,
-  selectViewCurrentId: (state: AppTypes.Root.IRootState) => state.CONTEXT[name].view.currentId,
-  selectPokemon: (state: AppTypes.Root.IRootState) => state.DATABASE.pokemon
+  selectMeta: (state: IApp.Root.IRootState) => state.CONTEXT[name].meta,
+  selectView: (state: IApp.Root.IRootState) => state.CONTEXT[name].view,
+  selectViewCurrentId: (state: IApp.Root.IRootState) => state.CONTEXT[name].view.currentId,
+  selectPokemon: (state: IApp.Root.IRootState) => state.DATABASE.pokemon
 };
 
 export { initialState, actions, reducer, selectors, name };

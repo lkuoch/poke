@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.scss";
-import type { NavbarTypes } from "Core/types";
+import type { INavbar } from "Core/types";
 
-function Navbar(props: NavbarTypes.Redux.IMappedProps) {
+function Navbar(props: INavbar.Redux.IMappedProps) {
   return (
     <div className="ui top attached menu">
       <div className="ui header">

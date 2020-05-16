@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { NavbarTypes } from "Core/types";
+import { INavbar } from "Core/types";
 
 // Name of slice
 const name = "NAVBAR";
 
 // Slice initial state
-const initialState: NavbarTypes.State.IState = {};
+const initialState: INavbar.State.IState = {};
 
 // Slice
-const { actions, reducer } = createSlice<NavbarTypes.State.IState, NavbarTypes.Redux.IActions>({
+const { actions, reducer } = createSlice<INavbar.State.IState, INavbar.Redux.IActions>({
   name,
   initialState,
   reducers: {}

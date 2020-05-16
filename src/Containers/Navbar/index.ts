@@ -2,13 +2,13 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 
 import Navbar from "./Components";
-import type { AppTypes, NavbarTypes } from "Core/types";
+import type { IApp, INavbar } from "Core/types";
 
-const mapStateToProps = (state: AppTypes.Root.IRootState): NavbarTypes.State.IMappedState => {
+const mapStateToProps = (state: IApp.Root.IRootState): INavbar.State.IMappedState => {
   return {};
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): NavbarTypes.Redux.IMappedDispatch => {
+const mapDispatchToProps = (dispatch: Dispatch): INavbar.Redux.IMappedDispatch => {
   return {};
 };
 

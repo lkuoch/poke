@@ -1,6 +1,6 @@
 import { put } from "redux-saga/effects";
 import { actions } from "./reducer";
-import type { AppConfigTypes } from "Core/types";
+import type { IAppConfig } from "Core/types";
 
 export function* initSaga() {
   // Select correct config
@@ -10,7 +10,7 @@ export function* initSaga() {
       : require("Config/poke.prod.json");
 
   // Load config into store
-  yield put(actions.updatePokeAppConfig(Config as AppConfigTypes.Models.IConfig));
+  yield put(actions.updatePokeAppConfig(Config as IAppConfig.Models.IConfig));
 }
 
 export default [];

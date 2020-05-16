@@ -7,9 +7,9 @@ import Loader from "Components/Loader";
 import { BasePath, PokemonImageOptions } from "Containers/PokemonPanel/entities";
 import { capitalizeString } from "Services/formattingService";
 
-import type { PokemonTypes } from "Core/types";
+import type { IPokemon } from "Core/types";
 
-function Pokemon(props: PokemonTypes.Redux.IMappedProps) {
+function Pokemon(props: IPokemon.Redux.IMappedProps) {
   const { meta, view, data, initView, updateCurrentViewId } = props;
 
   useEffect(() => {

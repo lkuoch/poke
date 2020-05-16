@@ -11,7 +11,3 @@ export namespace Util {
       }
     : never;
 }
-
-export namespace Data {
-  export type RetrieveIndexOptions = "Default" | "Flatten" | "Array";
-}

@@ -1,5 +1,5 @@
 import type { SliceCaseReducers, CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import type { DatabaseTypes } from "Core/types";
+import type { IDatabase } from "Core/types";
 
 export namespace Models {}
 
@@ -20,14 +20,14 @@ export namespace State {
 
   export interface IMappedState extends State.IState {
     data: {
-      pokemon: DatabaseTypes.Schema.pokemon;
+      pokemon: IDatabase.Schema.pokemon;
     };
   }
 }
 
 export namespace Redux {
   export interface IActions {
-    initView: PayloadAction<DatabaseTypes.Schema.pokemon.identifier>;
+    initView: PayloadAction<IDatabase.Schema.pokemon.identifier>;
     updateView: PayloadAction<Array<string>>;
     updateCurrentViewId: PayloadAction<string>;
   }

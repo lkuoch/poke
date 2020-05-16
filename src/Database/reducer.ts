@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import state from "./state";
-import type { DatabaseTypes } from "Core/types";
+import type { IDatabase } from "Core/types";
 
 // Name of slice
 const name = "DATABASE";
 
 // Slice initial state
-const initialState: DatabaseTypes.State.IState = state;
+const initialState: IDatabase.State.IState = state;
 
 // Slice
-const { reducer } = createSlice<DatabaseTypes.State.IState, DatabaseTypes.Redux.IActions>({
+const { reducer } = createSlice<IDatabase.State.IState, IDatabase.Redux.IActions>({
   name,
   initialState,
   reducers: {}

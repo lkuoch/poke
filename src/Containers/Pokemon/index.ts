@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 import { actions, selectors } from "./reducer";
 import Pokemon from "./Components";
-import type { AppTypes, PokemonTypes } from "Core/types";
+import type { IApp, IPokemon } from "Core/types";
 
-const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonTypes.State.IMappedState => {
+const mapStateToProps = (state: IApp.Root.IRootState): IPokemon.State.IMappedState => {
   const pokemon = selectors.selectPokemon(state);
   const meta = selectors.selectMeta(state);
   const view = selectors.selectView(state);
@@ -20,7 +20,7 @@ const mapStateToProps = (state: AppTypes.Root.IRootState): PokemonTypes.State.IM
   };
 };
 
-const mapDispatchToProp = (dispatch: Dispatch): PokemonTypes.Redux.IMappedDispatch => {
+const mapDispatchToProp = (dispatch: Dispatch): IPokemon.Redux.IMappedDispatch => {
   return {
     initView: (payload) => dispatch(actions.initView(payload)),
     updateCurrentViewId: (payload) => dispatch(actions.updateCurrentViewId(payload))
