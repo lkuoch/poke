@@ -21,7 +21,7 @@ export namespace State {
 
         pokemonStats: IDatabase.Schema.pokemon_stats["pokemon_stats"];
 
-        IPokemon: IDatabase.Schema.pokemon_types["pokemon_types"];
+        pokemonTypes: IDatabase.Schema.pokemon_types["pokemon_types"];
 
         imageLinks: Array<string>;
       };

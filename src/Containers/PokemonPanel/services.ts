@@ -55,7 +55,7 @@ export function RetrievePokemonDetails(
   const pokemonStats = state.DATABASE.pokemon_stats[currentPokemonId];
 
   // Types
-  const IPokemon = state.DATABASE.pokemon_types[currentPokemonId];
+  const pokemonTypes = state.DATABASE.pokemon_types[currentPokemonId];
 
   // Moves
   const pokemonMoves = RetrievePokemonMove(currentPokemonId)[currentPokemonId];
@@ -84,7 +84,7 @@ export function RetrievePokemonDetails(
 
     pokemonStats,
 
-    IPokemon,
+    pokemonTypes,
 
     imageLinks
   };
