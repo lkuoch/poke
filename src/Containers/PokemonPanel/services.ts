@@ -1,6 +1,6 @@
 import { RetrieveIndexes } from "Services/dataService";
 import { BasePath, PokemonImageOptions } from "./entities";
-import type { IApp, IDatabase, IPokemonPanel, IService } from "Core/types"; 
+import type { IApp, IDatabase, IPokemonPanel, IService } from "Core/types";
 
 export function RetrieveSharedDetails(state: IApp.Root.IRootState): IPokemonPanel.State.IState["shared"] {
   const pokemonVersions = state.DATABASE.versions.identifier;

@@ -55,7 +55,7 @@ const callAPIMiddleware: Middleware<Dispatch> = ({ dispatch }: MiddlewareAPI) =>
     (error) =>
       dispatch({
         type: failureType,
-        error: error.message || "Error fetching resource"
+        error: error.message || `Error fetching resource with payload: ${callAPIMiddleware}`
       })
   );
 };
