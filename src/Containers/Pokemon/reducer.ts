@@ -1,50 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { IApp, IPokemon } from "Core/types";
 
-// Name of slice
+import type { IRootState, IPokemon } from "Core/types";
+
 const name = "POKEMON";
-
-// Slice initial state
-const initialState: IPokemon.State.IState = {
-  view: {
-    ids: [],
-    currentId: "1"
-  },
-
-  meta: {
-    hasLoaded: false
+const initialState: IPokemon.IState = {
+  currentID: null,
+  tableFields: ["identifier", "height", "weight", "base_experience"],
+  tableFieldAliases: {
+    identifier: "Name",
+    height: "Height",
+    weight: "Weight",
+    base_experience: "Base XP"
   }
 };
 
-// Slice
-const { actions, reducer } = createSlice<
-  IPokemon.State.IState,
-  IPokemon.Redux.ISliceReducers
->({
+const { actions, reducer } = createSlice<IPokemon.IState, IPokemon.ISliceReducers>({
   name,
   initialState,
-  reducers: {
-    // When pokemon component loads, calculate view
-    initView: (state) => state,
-
-    updateView: (state, { payload }) => {
-      state.view.ids = payload;
-      state.view.currentId = payload[0];
-      state.meta.hasLoaded = true;
-    },
-
-    updateCurrentViewId: (state, { payload }) => {
-      state.view.currentId = payload;
-    }
-  }
+  reducers: {}
 });
 
 // Selectors
 const selectors = {
-  selectMeta: (state: IApp.Root.IRootState) => state.CONTEXT[name].meta,
-  selectView: (state: IApp.Root.IRootState) => state.CONTEXT[name].view,
-  selectViewCurrentId: (state: IApp.Root.IRootState) => state.CONTEXT[name].view.currentId,
-  selectPokemon: (state: IApp.Root.IRootState) => state.DATABASE.pokemon
+  selectCurrentId: (state: IRootState) => state.CONTEXT[name].currentID,
+  selectTableFields: (state: IRootState) => state.CONTEXT[name].tableFields,
+  selectTableFieldAliases: (state: IRootState) => state.CONTEXT[name].tableFieldAliases,
+
+  selectPokemonIds: (state: IRootState) => state.DATABASE.ids.pokemon_ids,
+  selectPokemonList: (state: IRootState) => state.DATABASE["pokemon"],
 };
 
 export { initialState, actions, reducer, selectors, name };

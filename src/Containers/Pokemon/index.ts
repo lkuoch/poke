@@ -3,28 +3,26 @@ import { connect } from "react-redux";
 
 import { actions, selectors } from "./reducer";
 import Pokemon from "./Components";
-import type { IApp, IPokemon } from "Core/types";
+import type { IRootState, IPokemon } from "Core/types";
 
-const mapStateToProps = (state: IApp.Root.IRootState): IPokemon.State.IMappedState => {
-  const pokemon = selectors.selectPokemon(state);
-  const meta = selectors.selectMeta(state);
-  const view = selectors.selectView(state);
+const mapStateToProps = (state: IRootState): IPokemon.IMappedState => {
+  const currentID = selectors.selectCurrentId(state);
+  const tableFields = selectors.selectTableFields(state);
+  const tableFieldAliases = selectors.selectTableFieldAliases(state);
+
+  const ids = selectors.selectPokemonIds(state);
+  const pokemon = selectors.selectPokemonList(state);
 
   return {
-    view,
-    meta,
+    currentID,
+    tableFields,
+    tableFieldAliases,
 
-    data: {
-      pokemon
-    }
+    ids,
+    pokemon
   };
 };
 
-const mapDispatchToProp = (dispatch: Dispatch): IPokemon.Redux.IMappedDispatch => {
-  return {
-    initView: (payload) => dispatch(actions.initView(payload)),
-    updateCurrentViewId: (payload) => dispatch(actions.updateCurrentViewId(payload))
-  };
-};
+const mapDispatchToProps = (dispatch: Dispatch): IPokemon.IMappedDispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProp)(Pokemon);
+export default connect(mapStateToProps, mapDispatchToProps)(Pokemon);

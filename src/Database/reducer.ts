@@ -6,10 +6,10 @@ import type { IDatabase } from "Core/types";
 const name = "DATABASE";
 
 // Slice initial state
-const initialState: IDatabase.State.IState = state;
+const initialState: IDatabase.IState = state;
 
 // Slice
-const { reducer } = createSlice<IDatabase.State.IState, IDatabase.Redux.IActions>({
+const { reducer } = createSlice<IDatabase.IState, IDatabase.IActions>({
   name,
   initialState,
   reducers: {}

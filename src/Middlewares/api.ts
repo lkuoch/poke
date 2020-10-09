@@ -1,11 +1,10 @@
 import { Middleware, MiddlewareAPI, Dispatch, AnyAction } from "redux";
 import { CALL_API_MIDDLEWARE_TYPE } from "./models";
-import type { IMiddleware } from "Core/types";
+import type { ICustomMiddleware } from "Core/types";
 
-// Handle call api
-const callApiHandler = async (callAPIPayload: IMiddleware.ICallApiPayload) => {
-  const callApi = async (callAPIPayload: IMiddleware.ICallApiPayload) => {
-    const response = await fetch(callAPIPayload.endpoint, callAPIPayload.schema);
+const callApiHandler = async (callAPIPayload: ICustomMiddleware.ICallApiPayload) => {
+  const callApi = async (_callAPIPayload: ICustomMiddleware.ICallApiPayload) => {
+    const response = await fetch(_callAPIPayload.endpoint, _callAPIPayload.schema);
     const data = await response.json();
     return data;
   };
@@ -25,27 +24,20 @@ const callApiHandler = async (callAPIPayload: IMiddleware.ICallApiPayload) => {
   return callApi(callAPIPayload);
 };
 
-// Call API middleware
 const callAPIMiddleware: Middleware<Dispatch> = ({ dispatch }: MiddlewareAPI) => (next) => (
   action: AnyAction
 ) => {
-  // Don't process if it's not the type we are looking for
   if (action.type !== CALL_API_MIDDLEWARE_TYPE) {
     return next(action);
   }
 
-  // Get body
-  const callAPIPayload = (action as IMiddleware.ICallApiAction).payload;
-
-  // Get redux types to return
+  const callAPIPayload = (action as ICustomMiddleware.ICallApiAction).payload;
   const [requestType, successType, failureType] = callAPIPayload.types;
 
-  // Dispatch request type
   dispatch({
     type: requestType
   });
 
-  // Begin network requests
   return callApiHandler(callAPIPayload).then(
     (response) =>
       dispatch({
