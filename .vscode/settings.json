@@ -1,9 +1,0 @@
-{
-  "git.ignoreLimitWarning": true,
-  "files.exclude": {
-    "**/package-lock.json": true,
-    "src/react-app-env.d.ts": true,
-    "build/": true,
-    "dist/": true
-  },
-}

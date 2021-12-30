@@ -1,22 +1,23 @@
-import React from "react";
+import * as React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import { ChakraProvider, localStorageManager, theme } from "@chakra-ui/react";
+import { Provider } from "jotai";
 
-import "fomantic-ui-css/semantic.min.css";
-import "swiper/css/swiper.min.css";
+import App from "./components/index";
 
-import configureStore from "Core/store";
-import * as serviceWorker from "Core/serviceWorker";
-import App from "Containers/App/Components";
+// Setup msw for mock data
+if (!CONFIG.isProd) {
+  const { worker } = await import("../mocks/mockServer");
+  worker.start();
+}
 
-const store = configureStore();
-
-// Entry point for app
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("pk-root")
+  <React.StrictMode>
+    <ChakraProvider colorModeManager={localStorageManager} theme={theme}>
+      <Provider>
+        <App />
+      </Provider>
+    </ChakraProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-serviceWorker.register();
